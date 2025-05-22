@@ -1,8 +1,6 @@
 [![Masterfabric Website](https://img.shields.io/badge/Masterfabric-Website-0A192F?style=for-the-badge)](https://masterfabric.co/)
 [![CubeHack25 Web App](https://img.shields.io/badge/CubeHack25-WebApp-blue?style=for-the-badge)](https://cubehack25.web.app/)
 
-<img src="https://www.masterfabric.co/_astro/masterfabric-logo.BwWAsd2u_1P6bHC.svg" alt="Masterfabric Logo" height="32" style="vertical-align:middle; margin-right:8px;"/>
-
 ![Flutter](https://img.shields.io/badge/Flutter-02569B?logo=flutter&logoColor=white&style=for-the-badge)
 ![Hackathon](https://img.shields.io/badge/Hackathon-FF4081?style=for-the-badge)
 ![Mobile](https://img.shields.io/badge/Mobile-34A853?style=for-the-badge)
