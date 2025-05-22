@@ -1,4 +1,18 @@
+[![Masterfabric Website](https://img.shields.io/badge/Masterfabric-Website-0A192F?style=for-the-badge)](https://masterfabric.co/)
 [![CubeHack25 Web App](https://img.shields.io/badge/CubeHack25-WebApp-blue?style=for-the-badge)](https://cubehack25.web.app/)
+
+<img src="https://www.masterfabric.co/_astro/masterfabric-logo.BwWAsd2u_1P6bHC.svg" alt="Masterfabric Logo" height="32" style="vertical-align:middle; margin-right:8px;"/>
+
+![Flutter](https://img.shields.io/badge/Flutter-02569B?logo=flutter&logoColor=white&style=for-the-badge)
+![Hackathon](https://img.shields.io/badge/Hackathon-FF4081?style=for-the-badge)
+![Mobile](https://img.shields.io/badge/Mobile-34A853?style=for-the-badge)
+![Cube Incubation](https://img.shields.io/badge/Cube%20Incubation-6200EA?style=for-the-badge)
+![React](https://img.shields.io/badge/React-20232A?logo=react&logoColor=61DAFB&style=for-the-badge)
+![Expo](https://img.shields.io/badge/Expo-000020?logo=expo&logoColor=white&style=for-the-badge)
+![Firebase](https://img.shields.io/badge/Firebase-FFCA28?logo=firebase&logoColor=white&style=for-the-badge)
+![Appwrite](https://img.shields.io/badge/Appwrite-F02E65?logo=appwrite&logoColor=white&style=for-the-badge)
+![OneSignal](https://img.shields.io/badge/OneSignal-EA0A2A?logo=onesignal&logoColor=white&style=for-the-badge)
+![Supabase](https://img.shields.io/badge/Supabase-3ECF8E?logo=supabase&logoColor=white&style=for-the-badge)
 
 # Version 1.0.3
 
