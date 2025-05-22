@@ -1,4 +1,4 @@
-# Version 1.0.2
+# Version 1.0.3
 
 #EN
 
@@ -74,7 +74,9 @@ Now you're ready to start development when the hackathon officially begins!
 
 The developed application must be built using one of the following mobile development stacks:
 
-* **Cross-Platform:** Flutter
+* **Cross-Platform:** 
+  * Flutter
+  * React Native (Expo)
 * **iOS (Native):** Swift
 * **Android (Native):** Kotlin
 
@@ -259,7 +261,9 @@ Artık hackathon resmi olarak başladığında geliştirmeye başlamaya hazırs�
 
 Geliştirilen uygulama aşağıdaki mobil geliştirme teknolojilerinden biri ile oluşturulmalıdır:
 
-* **Çapraz Platform:** Flutter
+* **Çapraz Platform:** 
+  * Flutter
+  * React Native (Expo)
 * **iOS (Yerel):** Swift
 * **Android (Yerel):** Kotlin
 
