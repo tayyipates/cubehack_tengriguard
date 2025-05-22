@@ -193,6 +193,14 @@
       #scrollTopBtn { width: 40px; height: 40px; font-size: 1.5em; right: 10px; bottom: 16px; }
     }
   </style>
+  <!-- Google Analytics (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XSTTRGZS5N"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XSTTRGZS5N');
+  </script>
 </head>
 <body>
   <div class="info-bar" id="infoBar">
@@ -656,6 +664,14 @@
     if (typeof firebase.analytics === "function") {
       firebase.analytics();
     }
+
+    // Log page_view event for both Firebase Analytics and Google Analytics
+    if (typeof firebase !== "undefined" && typeof firebase.analytics === "function") {
+      firebase.analytics().logEvent('page_view');
+    }
+    if (typeof gtag === "function") {
+      gtag('event', 'page_view');
+    }
   </script>
 </body>
-</html>
+<!-- ...existing code... -->
