@@ -582,6 +582,10 @@
 
     // Add to calendar logic (Google Calendar direct, with loading indicator, localized)
     addToCalendarBtn.onclick = function() {
+      // Firebase Analytics event
+      if (typeof firebase.analytics === "function") {
+        firebase.analytics().logEvent('add_to_calendar');
+      }
       function toGoogleDate(dt) {
         return dt.toISOString().replace(/[-:]/g, '').replace(/\.\d+Z$/, 'Z');
       }
