@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Çözüm Sende Hackathon - Rules & Guide</title>
+  <meta name="description" content="Çözüm Sende Hackathon 2025: Mobile app hackathon rules, submission guide, evaluation criteria, and all participation details. Join, code, and win!">
+  <meta name="keywords" content="hackathon, mobile, cubehack, çözüm sende, rules, guide, submission, evaluation, flutter, react native, swift, kotlin, firebase, figma, github, cube incubation, 2025">
+  <meta name="author" content="gurkanfikretgunak, masterfabric.co">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#a3bcf7">
+  <meta property="og:title" content="Çözüm Sende Hackathon - Rules & Guide">
+  <meta property="og:description" content="Çözüm Sende Hackathon 2025: Mobile app hackathon rules, submission guide, evaluation criteria, and all participation details. Join, code, and win!">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://cubeincubation.com/hackathon">
+  <meta property="og:image" content="https://cubeincubation.com/assets/hackathon-og.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Çözüm Sende Hackathon - Rules & Guide">
+  <meta name="twitter:description" content="Çözüm Sende Hackathon 2025: Mobile app hackathon rules, submission guide, evaluation criteria, and all participation details. Join, code, and win!">
+  <meta name="twitter:image" content="https://cubeincubation.com/assets/hackathon-og.png">
+  <link rel="icon" type="image/png" href="https://cubeincubation.com/favicon.png">
+  <link rel="apple-touch-icon" href="https://cubeincubation.com/apple-touch-icon.png">
+  <link rel="canonical" href="https://cubeincubation.com/hackathon">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;400&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background: linear-gradient(120deg, #f8fafc 0%, #e0e7ff 100%);
+      font-family: 'Montserrat', Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      color: #22223b;
+    }
+    .container {
+      max-width: 950px;
+      margin: 32px auto;
+      background: #fff;
+      border-radius: 18px;
+      box-shadow: 0 4px 32px rgba(60,60,120,0.08);
+      padding: 32px 24px 40px 24px;
+    }
+    .info-bar {
+      width: 100%;
+      background: #e0e7ff;
+      color: #232946;
+      border-radius: 0 0 12px 12px;
+      box-shadow: 0 2px 8px rgba(120,120,180,0.07);
+      padding: 12px 18px;
+      font-size: 1.02em;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+      align-items: center;
+      justify-content: flex-start;
+      margin-bottom: 18px;
+      word-break: break-all;
+    }
+    .info-bar span {
+      margin-right: 18px;
+      font-weight: 500;
+      font-size: 0.98em;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .info-bar .info-label {
+      color: #4f518c;
+      font-weight: 600;
+      margin-right: 4px;
+    }
+    h1, h2, h3 {
+      color: #3a3a5a;
+      margin-top: 0;
+    }
+    h1 {
+      font-size: 2.2rem;
+      margin-bottom: 0.5em;
+      text-align: center;
+    }
+    h2 {
+      font-size: 1.4rem;
+      margin-top: 2em;
+      margin-bottom: 0.5em;
+      border-left: 5px solid #a3bcf7;
+      padding-left: 12px;
+    }
+    h3 {
+      font-size: 1.1rem;
+      margin-bottom: 0.5em;
+      color: #4f518c;
+    }
+    .section {
+      margin-bottom: 2.5em;
+    }
+    ul, ol {
+      margin-top: 0.5em;
+      margin-bottom: 1.5em;
+      padding-left: 1.5em;
+    }
+    .info-list li {
+      margin-bottom: 0.5em;
+    }
+    .table-wrap {
+      overflow-x: auto;
+      margin-bottom: 2em;
+    }
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin: 1em 0;
+      background: #f8fafc;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    th, td {
+      border: 1px solid #a3bcf7;
+      padding: 10px 12px;
+      text-align: left;
+    }
+    th {
+      background: #e0e7ff;
+      color: #232946;
+    }
+    .deliverables {
+      background: #f3f6fd;
+      border-radius: 10px;
+      padding: 18px 20px;
+      margin-bottom: 2em;
+      box-shadow: 0 2px 8px rgba(120,120,180,0.07);
+    }
+    .important {
+      background: #fffbe6;
+      border-left: 5px solid #fbbf24;
+      padding: 1em 1.5em;
+      margin: 1.5em 0;
+      border-radius: 8px;
+      color: #7c6f00;
+    }
+    .lang-section {
+      margin-top: 3em;
+      padding-top: 2em;
+      border-top: 2px dashed #a3bcf7;
+    }
+    .contact {
+      background: #e0e7ff;
+      border-radius: 10px;
+      padding: 18px 20px;
+      margin-top: 2em;
+      font-size: 1.1rem;
+      color: #3a3a5a;
+      box-shadow: 0 2px 8px rgba(120,120,180,0.07);
+      text-align: center;
+    }
+    .start-coding {
+      text-align: center;
+      font-size: 1.3rem;
+      margin-top: 2em;
+      color: #232946;
+      font-weight: bold;
+    }
+    code, pre {
+      background: #f3f6fd;
+      border-radius: 6px;
+      padding: 2px 6px;
+      font-family: 'Fira Mono', monospace;
+      font-size: 0.98em;
+    }
+    /* Scroll to top button */
+    #scrollTopBtn {
+      display: none;
+      position: fixed;
+      bottom: 32px;
+      right: 24px;
+      z-index: 99;
+      background: #a3bcf7;
+      color: #232946;
+      border: none;
+      outline: none;
+      border-radius: 50%;
+      width: 48px;
+      height: 48px;
+      box-shadow: 0 2px 8px rgba(120,120,180,0.13);
+      cursor: pointer;
+      font-size: 2em;
+      transition: background 0.2s;
+    }
+    #scrollTopBtn:hover {
+      background: #7b93d6;
+    }
+    @media (max-width: 700px) {
+      .container { padding: 10px 2vw; }
+      table, th, td { font-size: 0.95em; }
+      .info-bar { font-size: 0.97em; flex-direction: column; gap: 6px; }
+      #scrollTopBtn { width: 40px; height: 40px; font-size: 1.5em; right: 10px; bottom: 16px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="info-bar" id="infoBar">
+    <span><span class="info-label">Platform:</span> <span id="platformInfo">-</span></span>
+    <span><span class="info-label">IP:</span> <span id="ipInfo">-</span></span>
+    <span><span class="info-label">Screen:</span> <span id="screenInfo">-</span></span>
+    <span><span class="info-label">Language:</span> <span id="langInfo">-</span></span>
+  </div>
+  <!-- Hackathon Countdown & Calendar -->
+  <div id="hackathonCountdown" style="max-width:950px;margin:0 auto 18px auto;padding:16px 18px 12px 18px;background:#fffbe6;border-radius:10px;box-shadow:0 2px 8px rgba(251,191,36,0.08);color:#7c6f00;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;">
+    <div id="countdownText" style="font-weight:700;font-size:2.1rem;letter-spacing:1px;line-height:1.2;"></div>
+    <button id="addToCalendarBtn" style="background:#fbbf24;color:#232946;border:none;border-radius:6px;padding:10px 22px;font-size:1.13em;cursor:pointer;font-family:'Montserrat',Arial,sans-serif;box-shadow:0 1px 4px rgba(251,191,36,0.07);transition:background 0.2s;">
+      📅 <span id="calendarBtnText">Add to Calendar</span>
+    </button>
+  </div>
+  <div class="container">
+    <h1>📱 "Çözüm Sende" Hackathon - Rules and Submission Guide</h1>
+    <div class="section">
+      <h2>🧾 General Overview</h2>
+      <ul class="info-list">
+        <li>⏱ <b>Duration:</b> May 24, 2025 – 19:00 ⏳ May 25, 2025 – 11:00 (16 hours)</li>
+        <li>📍 <b>Format:</b> On-site event. Project management and submissions via GitHub.</li>
+        <li>💡 <b>UI/UX:</b> All designs must be prepared using Figma. Development via GitHub.</li>
+        <li>🔧 <b>Technologies:</b> All used must be clearly stated in the README file.</li>
+        <li>📂 <b>Repository:</b> Public GitHub repo named <code>cubehack_projectname</code>.</li>
+        <li>📝 <b>Documentation:</b> All docs, setup, and team details in README.</li>
+        <li>🎥 <b>Demo:</b> Short demo video and Figma prototype are mandatory.</li>
+      </ul>
+    </div>
+    <div class="section">
+      <h2>📥 Repository Setup Instructions (IMPORTANT!)</h2>
+      <ol>
+        <li>Fork this repository to your personal GitHub account</li>
+        <li>Rename the forked repository to <code>cubehack_projectname</code></li>
+        <li>Set repository visibility to <b>public</b></li>
+        <li>Add team members as collaborators</li>
+        <li>Clone the repository locally when the hackathon starts</li>
+      </ol>
+      <div class="important">
+        <b>This forking process is mandatory</b> and will be used to verify that development started only after the hackathon's official start time. The original commit history from this template repository will be preserved.
+      </div>
+      <h3>How to Fork This Project - Step by Step Guide</h3>
+      <ol>
+        <li>Login to GitHub</li>
+        <li>Fork the repository</li>
+        <li>Rename your forked repository to <code>cubehack_yourprojectname</code></li>
+        <li>Check repository visibility is <b>public</b></li>
+        <li>Add team members as collaborators</li>
+        <li>Clone the repository locally</li>
+        <li>Verify the setup</li>
+      </ol>
+    </div>
+    <div class="section">
+      <h2>🔌 Technology Requirements</h2>
+      <ul>
+        <li><b>Cross-Platform:</b> Flutter, React Native (Expo)</li>
+        <li><b>iOS (Native):</b> Swift</li>
+        <li><b>Android (Native):</b> Kotlin</li>
+        <li>A working version for both iOS and Android must be delivered.</li>
+      </ul>
+      <h3>☁️ Recommended Tools & Services</h3>
+      <ul>
+        <li><b>Database / BaaS:</b> Firebase, Supabase, Appwrite</li>
+        <li><b>Push Notification:</b> OneSignal, Firebase FCM</li>
+        <li><b>App Website (Optional):</b> Firebase Hosting (e.g., *.web.app)</li>
+      </ul>
+    </div>
+    <div class="section">
+      <h2>📋 Rules</h2>
+      <ol>
+        <li>Teams may consist of up to 4 members.</li>
+        <li>All development must start after the hackathon begins.</li>
+        <li>The project must be a <b>mobile application</b> (Android, iOS, or cross-platform).</li>
+        <li>The development process must be fully managed via GitHub.</li>
+        <li>The submitted application must be functional and testable.</li>
+        <li>All technologies used must be documented in the README.</li>
+        <li>All designs must be made via Figma and the link must be provided.</li>
+        <li>Code must be hosted on GitHub, properly structured, and well-commented.</li>
+        <li>Repository name must follow this format: <code>cubehack_projectname</code></li>
+        <li>The repository must be <b>public</b>.</li>
+        <li>Commit messages should be clear and meaningful.</li>
+        <li>Development must reflect teamwork and collaboration.</li>
+        <li>README must include participation terms, installation guide, and usage notes.</li>
+      </ol>
+    </div>
+    <div class="section table-wrap">
+      <h2>📱 Evaluation Criteria</h2>
+      <table>
+        <tr><th>Criteria</th><th>Description</th><th>Points</th></tr>
+        <tr><td>Creativity & Idea</td><td>Innovation and originality</td><td>25</td></tr>
+        <tr><td>Technical Execution</td><td>Code quality and architecture</td><td>25</td></tr>
+        <tr><td>UI/UX Design</td><td>User interface and experience</td><td>20</td></tr>
+        <tr><td>Functionality</td><td>Stability and performance</td><td>15</td></tr>
+        <tr><td>Presentation</td><td>Video, documentation, delivery quality</td><td>15</td></tr>
+        <tr><th colspan="2">Total</th><th>100</th></tr>
+      </table>
+    </div>
+    <div class="section deliverables">
+      <h2>📦 Required Deliverables</h2>
+      <ul>
+        <li>✅ <code>rules.md</code> (this document)</li>
+        <li>✅ <code>README.md</code> (project overview, setup instructions, technologies used, team details, terms)</li>
+        <li>✅ Working app version (.apk / .aab file or TestFlight/Google Play link)</li>
+        <li>✅ Figma design link</li>
+        <li>✅ Demo video (maximum 3 minutes)</li>
+        <li>✅ Technical and user analysis report (<code>analysis-report.md</code>)</li>
+        <li>✅ Organized folder structure with source code</li>
+        <li>✅ Team info (<code>team-information.md</code>)</li>
+      </ul>
+      <pre><code>📁 project/
+ ┣ 📁 app/              (all source code of the app)
+ ┣ 📁 docs/             (technical documentation)
+ ┣ 📁 presentension/    (optional presentation files)
+ ┣ 📁 video/            (demo videos)
+ ┣ 📁 app-packages/     (app install files: .apk / .aab etc.)
+ ┣ 📄 README.md
+ ┣ 📄 rules.md
+ ┣ 📄 team-information.md
+</code></pre>
+    </div>
+    <div class="important">
+      <h2>⚠️ Important Notes</h2>
+      <ul>
+        <li>The repository must be <b>public</b>.</li>
+        <li>Repository naming format: <code>cubehack_projectname</code></li>
+        <li>The README file must include:
+          <ul>
+            <li>Technologies used</li>
+            <li>Team member info and roles</li>
+            <li>Setup instructions</li>
+            <li>App features and usage notes</li>
+          </ul>
+        </li>
+        <li>Commit history should reflect regular updates and team collaboration.</li>
+        <li>Code must be clean, well-documented, and free of unnecessary dependencies.</li>
+        <li>A working version of the application must be accessible.</li>
+        <li>The demo video should clearly showcase the core functionalities of the app.</li>
+      </ul>
+    </div>
+    <div class="contact">
+      <b>📞 Contact & Support</b><br>
+      For technical or organizational questions: <a href="https://cubeincubation.com" target="_blank">cubeincubation.com</a>
+    </div>
+    <div class="start-coding">
+      Start coding and good luck! 🚀
+    </div>
+    <div class="lang-section">
+      <h1>📱 "Çözüm Sende" Hackathon - Kurallar ve Teslimat Rehberi (TR)</h1>
+      <div class="section">
+        <h2>🧾 Genel Açıklama</h2>
+        <ul class="info-list">
+          <li>⏱ <b>Süre:</b> 24 Mayıs 2025 – 19:00 ⏳ 25 Mayıs 2025 – 11:00 (16 saat)</li>
+          <li>📍 <b>Format:</b> Fiziksel katılım. Proje yönetimi ve teslimatlar GitHub üzerinden yapılacaktır.</li>
+          <li>💡 <b>Tüm tasarımlar:</b> Figma üzerinden hazırlanmalıdır. Kod geliştirme süreci GitHub üzerinden yürütülmelidir.</li>
+          <li>🔧 <b>Kullanılan tüm teknolojiler:</b> README dosyasında açıkça belirtilmelidir.</li>
+          <li>📂 <b>Teslim edilecek projeler:</b> <code>cubehack_projectname</code> formatında adlandırılmış <b>herkese açık</b> bir GitHub deposunda olmalıdır.</li>
+          <li>📝 <b>Dokümantasyon:</b> Tüm dokümantasyon, kurulum talimatları ve katılımcı bilgileri README dosyasında yer almalıdır.</li>
+          <li>🎥 <b>Demo:</b> Uygulamayı tanıtan kısa bir video ve Figma tasarım prototipi zorunludur.</li>
+        </ul>
+      </div>
+      <div class="section">
+        <h2>📥 Depo Kurulum Talimatları (ÖNEMLİ!)</h2>
+        <ol>
+          <li>Takım lideri bu depoyu kendi GitHub hesabına fork etmelidir</li>
+          <li>Fork edilen deponun adı <code>cubehack_projectname</code> formatında değiştirilmelidir</li>
+          <li>Depo görünürlüğünün <b>herkese açık (public)</b> olarak ayarlandığından emin olunmalıdır</li>
+          <li>Takım üyeleri, fork edilen depoya işbirlikçi olarak eklenmelidir</li>
+          <li>Hackathon başladığında geliştirmeye başlamak için depo yerel bilgisayara klonlanmalıdır</li>
+        </ol>
+        <div class="important">
+          <b>Bu fork işlemi zorunludur</b> ve geliştirmenin yalnızca hackathon'un resmi başlangıç saatinden sonra başladığını doğrulamak için kullanılacaktır. Bu şablon deposundan orijinal commit geçmişi korunacak olup, bu durum organizatörlerin kurallara uygunluğu doğrulamasına yardımcı olur.
+        </div>
+        <h3>Bu Projeyi Fork Etme - Adım Adım Kılavuz</h3>
+        <ol>
+          <li>GitHub'a giriş yapın</li>
+          <li>Depoyu fork edin</li>
+          <li>Fork edilen deponuzu <code>cubehack_projeadiniz</code> olarak yeniden adlandırın</li>
+          <li>Depo görünürlüğünü kontrol edin (herkese açık olmalı)</li>
+          <li>Takım üyelerini işbirlikçi olarak ekleyin</li>
+          <li>Depoyu yerel bilgisayarınıza klonlayın</li>
+          <li>Kurulumu doğrulayın</li>
+        </ol>
+      </div>
+      <div class="section">
+        <h2>🔌 Teknoloji Gereksinimleri</h2>
+        <ul>
+          <li><b>Çapraz Platform:</b> Flutter, React Native (Expo)</li>
+          <li><b>iOS (Yerel):</b> Swift</li>
+          <li><b>Android (Yerel):</b> Kotlin</li>
+          <li>Her iki platform (iOS ve Android) için çalışabilir versiyon teslim edilmelidir.</li>
+        </ul>
+        <h3>☁️ Önerilen Servis ve Araçlar</h3>
+        <ul>
+          <li><b>Veritabanı / BaaS:</b> Firebase, Supabase, Appwrite</li>
+          <li><b>Bildirim Servisleri:</b> OneSignal, Firebase FCM</li>
+          <li><b>App Websitesi:</b> Firebase Hosting ile (*.web.app) olarak iletebilirsiniz.</li>
+        </ul>
+      </div>
+      <div class="section">
+        <h2>📋 Kurallar</h2>
+        <ol>
+          <li>Takımlar en fazla 4 kişiden oluşabilir.</li>
+          <li>Tüm yazılım geliştirme süreci hackathon başladıktan sonra başlamalıdır.</li>
+          <li>Geliştirilen proje bir <b>mobil uygulama</b> (Android, iOS veya çapraz platform) olmalıdır.</li>
+          <li>Geliştirme süreci tamamen GitHub üzerinden yönetilmelidir.</li>
+          <li>Teslim edilen uygulama çalışır ve test edilebilir durumda olmalıdır.</li>
+          <li>Kullanılan tüm teknolojiler README dosyasında belirtilmelidir.</li>
+          <li>Tüm tasarımlar Figma üzerinden yapılmalı ve bağlantı paylaşılmalıdır.</li>
+          <li>Kodlar GitHub’da barındırılmalı, yorumlanmış ve düzenli olmalıdır.</li>
+          <li>Depo adı şu şekilde olmalıdır: <code>cubehack_projectname</code></li>
+          <li>Depo herkese <b>açık (public)</b> olmalıdır.</li>
+          <li>Commit mesajları açıklayıcı ve düzenli olmalıdır.</li>
+          <li>Geliştirme süreci takım içerisinde iş birliği ile yürütülmelidir.</li>
+          <li>README dosyasında katılım koşulları, kurulum talimatları ve kullanım notları yer almalıdır.</li>
+        </ol>
+      </div>
+      <div class="section table-wrap">
+        <h2>📱 Değerlendirme Kriterleri</h2>
+        <table>
+          <tr><th>Kriter</th><th>Açıklama</th><th>Puan</th></tr>
+          <tr><td>Yaratıcılık & Fikir</td><td>Yenilikçilik ve özgünlük</td><td>25</td></tr>
+          <tr><td>Teknik Uygulama</td><td>Kod sağlamlığı ve yazılım mimarisi</td><td>25</td></tr>
+          <tr><td>Arayüz & Kullanım</td><td>UI/UX kalitesi</td><td>20</td></tr>
+          <tr><td>İşlevsellik</td><td>Uygulamanın kararlılığı ve performansı</td><td>15</td></tr>
+          <tr><td>Sunum</td><td>Video, dokümantasyon, teslim kalitesi</td><td>15</td></tr>
+          <tr><th colspan="2">Toplam</th><th>100</th></tr>
+        </table>
+      </div>
+      <div class="section deliverables">
+        <h2>📦 Teslim Edilmesi Gerekenler</h2>
+        <ul>
+          <li>✅ <code>rules.md</code> (bu doküman)</li>
+          <li>✅ <code>README.md</code> (proje özeti, kurulum ve kullanım talimatları, kullanılan teknolojiler, katılımcı bilgileri, şartlar)</li>
+          <li>✅ Çalışan uygulama versiyonu (.apk / .aab dosyası veya TestFlight/Google Play bağlantısı)</li>
+          <li>✅ Figma tasarım bağlantısı</li>
+          <li>✅ Uygulama tanıtım videosu (maksimum 3 dakika)</li>
+          <li>✅ Teknik ve kullanıcı analiz raporu <code>analysis-report.md</code></li>
+          <li>✅ Düzenli klasör yapısı ve kaynak kodlar</li>
+          <li>✅ Takım bilgileri <code>team-information.md</code></li>
+        </ul>
+        <pre><code>📁 project/
+ ┣ 📁 app/              (tüm uygulama kaynak kodu)
+ ┣ 📁 docs/             (teknik dokümantasyon)
+ ┣ 📁 presentension/    (varsa sunum dosyaları)
+ ┣ 📁 video/            (tanıtım videoları)
+ ┣ 📁 app-packages/     (uygulama kurulum dosyaları: .apk / .aab / vb.)
+ ┣ 📄 README.md
+ ┣ 📄 rules.md
+ ┣ 📄 team-information.md
+</code></pre>
+      </div>
+      <div class="important">
+        <h2>⚠️ Dikkat Edilmesi Gerekenler</h2>
+        <ul>
+          <li>Depo <b>herkese açık (public)</b> olmalıdır.</li>
+          <li>Depo adı: <code>cubehack_projectname</code> formatında olmalıdır.</li>
+          <li>README dosyasında:
+            <ul>
+              <li>Kullanılan teknolojiler</li>
+              <li>Takım üye bilgileri ve rolleri</li>
+              <li>Kurulum talimatları</li>
+              <li>Uygulama özellikleri ve kullanım notları açıkça belirtilmelidir.</li>
+            </ul>
+          </li>
+          <li>Commit geçmişi düzenli ve takım çalışmasını yansıtan nitelikte olmalıdır.</li>
+          <li>Kod temiz, iyi yorumlanmış ve gereksiz bağımlılıklardan arındırılmış olmalıdır.</li>
+          <li>Uygulamanın çalışır bir versiyonu erişilebilir olmalıdır.</li>
+          <li>Kısa tanıtım videosu, uygulamanın temel işlevlerini açıkça göstermelidir.</li>
+        </ul>
+      </div>
+      <div class="contact">
+        <b>📞 İletişim & Sorular</b><br>
+        Teknik ya da organizasyonel sorular için: <a href="https://cubeincubation.com" target="_blank">cubeincubation.com</a>
+      </div>
+      <div class="start-coding">
+        Kodlamaya başlayın ve başarılar! 🚀
+      </div>
+    </div>
+  </div>
+  <section style="margin:32px auto 0 auto; max-width:950px; background:#f8fafc; border-radius:12px; box-shadow:0 2px 12px rgba(120,120,180,0.07); padding:18px 24px 18px 24px;">
+    <h2 style="color:#3a3a5a; font-size:1.18rem; margin-top:0; margin-bottom:0.7em; border-left:5px solid #a3bcf7; padding-left:12px;">🔗 Technologies & References</h2>
+    <ul style="margin:0 0 0.5em 0; padding-left:1.2em; color:#4f518c; font-size:1.04em; text-align:left;">
+      <li><b>Flutter:</b> <a href="https://flutter.dev/" target="_blank">https://flutter.dev/</a></li>
+      <li><b>React Native (Expo):</b> <a href="https://reactnative.dev/" target="_blank">https://reactnative.dev/</a> &middot; <a href="https://expo.dev/" target="_blank">https://expo.dev/</a></li>
+      <li><b>Swift:</b> <a href="https://developer.apple.com/swift/" target="_blank">https://developer.apple.com/swift/</a></li>
+      <li><b>Kotlin:</b> <a href="https://kotlinlang.org/" target="_blank">https://kotlinlang.org/</a></li>
+      <li><b>Firebase:</b> <a href="https://firebase.google.com/" target="_blank">https://firebase.google.com/</a></li>
+      <li><b>Supabase:</b> <a href="https://supabase.com/" target="_blank">https://supabase.com/</a></li>
+      <li><b>Appwrite:</b> <a href="https://appwrite.io/" target="_blank">https://appwrite.io/</a></li>
+      <li><b>OneSignal:</b> <a href="https://onesignal.com/" target="_blank">https://onesignal.com/</a></li>
+      <li><b>Figma:</b> <a href="https://figma.com/" target="_blank">https://figma.com/</a></li>
+      <li><b>GitHub:</b> <a href="https://github.com/" target="_blank">https://github.com/</a></li>
+      <li><b>ipify (IP API):</b> <a href="https://www.ipify.org/" target="_blank">https://www.ipify.org/</a></li>
+      <li><b>Google Fonts:</b> <a href="https://fonts.google.com/" target="_blank">https://fonts.google.com/</a></li>
+    </ul>
+  </section>
+  <button id="scrollTopBtn" title="Go to top" aria-label="Go to top">
+    &#8679;
+  </button>
+
+    <!-- Footer -->
+  <footer style="margin: 40px auto 0 auto; max-width:950px; background: #f8fafc; border-radius: 12px; box-shadow: 0 2px 12px rgba(120,120,180,0.07); padding: 18px 0 10px 0; text-align: center; font-family: 'Montserrat', Arial, sans-serif; color: #4f518c; font-size: 1.08em;">
+    <div>
+      <b>Author:</b> gurkanfikretgunak · 
+      <a href="https://masterfabric.co" target="_blank" style="color:#3a3a5a;text-decoration:underline;">masterfabric.co</a>
+    </div>
+    <div style="margin-top: 4px; color: #a3bcf7; font-size: 0.98em;">
+      v1.0.3
+    </div>
+  </footer>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-analytics-compat.js"></script>
+  <script>
+    // Info bar population
+    document.getElementById('platformInfo').textContent = navigator.userAgent;
+    document.getElementById('screenInfo').textContent = window.screen.width + "x" + window.screen.height;
+    document.getElementById('langInfo').textContent = navigator.language || navigator.userLanguage;
+
+    // Get IP address (using a free public API)
+    fetch('https://api.ipify.org?format=json')
+      .then(res => res.json())
+      .then(data => {
+        document.getElementById('ipInfo').textContent = data.ip;
+      })
+      .catch(() => {
+        document.getElementById('ipInfo').textContent = 'N/A';
+      });
+
+    // Hackathon countdown logic
+    // Set your hackathon start/end times (UTC+3 for Istanbul)
+    const hackathonStart = new Date('2025-05-24T19:00:00+03:00');
+    const hackathonEnd = new Date('2025-05-25T11:00:00+03:00');
+    const countdownText = document.getElementById('countdownText');
+    const addToCalendarBtn = document.getElementById('addToCalendarBtn');
+    const calendarBtnText = document.getElementById('calendarBtnText');
+
+    // Language detection
+    const userLang = (navigator.language || navigator.userLanguage || 'en').toLowerCase();
+    const isTR = userLang.startsWith('tr');
+
+    // Localized texts
+    const texts = {
+      en: {
+        startsIn: (h, m, s) => `⏳ Hackathon starts in <span style="color:#fbbf24">${h}:${m}:${s}</span><br><span style="font-size:1.1rem;font-weight:400;">(24 May 2025, 19:00)</span>`,
+        endsIn: (h, m, s) => `🚀 Hackathon is LIVE! Ends in <span style="color:#fbbf24">${h}:${m}:${s}</span><br><span style="font-size:1.1rem;font-weight:400;">(25 May 2025, 11:00)</span>`,
+        ended: '✅ Hackathon ended.',
+        calendarBtn: 'Add to Calendar',
+        calendarLoading: 'Redirecting to your calendar...',
+      },
+      tr: {
+        startsIn: (h, m, s) => `⏳ Hackathon başlıyor: <span style="color:#fbbf24">${h}:${m}:${s}</span><br><span style="font-size:1.1rem;font-weight:400;">(24 Mayıs 2025, 19:00)</span>`,
+        endsIn: (h, m, s) => `🚀 Hackathon başladı! Bitişe kalan <span style="color:#fbbf24">${h}:${m}:${s}</span><br><span style="font-size:1.1rem;font-weight:400;">(25 Mayıs 2025, 11:00)</span>`,
+        ended: '✅ Hackathon sona erdi.',
+        calendarBtn: 'Takvime Ekle',
+        calendarLoading: 'Takviminize yönlendiriliyorsunuz...',
+      }
+    };
+    const t = isTR ? texts.tr : texts.en;
+    calendarBtnText.textContent = t.calendarBtn;
+
+    function pad(n) { return n < 10 ? '0' + n : n; }
+
+    function updateCountdown() {
+      const now = new Date();
+      if (now < hackathonStart) {
+        // Before hackathon
+        const diff = hackathonStart - now;
+        const h = pad(Math.floor(diff / 1000 / 60 / 60));
+        const m = pad(Math.floor(diff / 1000 / 60) % 60);
+        const s = pad(Math.floor(diff / 1000) % 60);
+        countdownText.innerHTML = t.startsIn(h, m, s);
+      } else if (now >= hackathonStart && now < hackathonEnd) {
+        // During hackathon
+        const diff = hackathonEnd - now;
+        const h = pad(Math.floor(diff / 1000 / 60 / 60));
+        const m = pad(Math.floor(diff / 1000 / 60) % 60);
+        const s = pad(Math.floor(diff / 1000) % 60);
+        countdownText.innerHTML = t.endsIn(h, m, s);
+      } else {
+        // After hackathon
+        countdownText.innerHTML = t.ended;
+        addToCalendarBtn.style.display = 'none';
+      }
+    }
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+
+    // Add to calendar logic (Google Calendar direct, with loading indicator, localized)
+    addToCalendarBtn.onclick = function() {
+      function toGoogleDate(dt) {
+        return dt.toISOString().replace(/[-:]/g, '').replace(/\.\d+Z$/, 'Z');
+      }
+      const googleUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE`
+        + `&text=${encodeURIComponent('Çözüm Sende Hackathon 2025')}`
+        + `&dates=${toGoogleDate(hackathonStart)}/${toGoogleDate(hackathonEnd)}`
+        + `&details=${encodeURIComponent('Start coding at 19:00, 24 May 2025! Ends 11:00, 25 May 2025. Good luck!')}`
+        + `&location=${encodeURIComponent('Cube Incubation, Istanbul')}`;
+
+      // Show loading indicator (localized)
+      let loader = document.createElement('div');
+      loader.id = 'calendarLoader';
+      loader.style.position = 'fixed';
+      loader.style.top = '0';
+      loader.style.left = '0';
+      loader.style.width = '100vw';
+      loader.style.height = '100vh';
+      loader.style.background = 'rgba(255,255,255,0.7)';
+      loader.style.display = 'flex';
+      loader.style.alignItems = 'center';
+      loader.style.justifyContent = 'center';
+      loader.style.zIndex = '9999';
+      loader.innerHTML = `
+        <div style="display:flex;flex-direction:column;align-items:center;">
+          <div style="border:6px solid #f3f3f3;border-top:6px solid #fbbf24;border-radius:50%;width:48px;height:48px;animation:spin 1s linear infinite;"></div>
+          <div style="margin-top:18px;color:#7c6f00;font-size:1.13em;font-family:'Montserrat',Arial,sans-serif;">${t.calendarLoading}</div>
+        </div>
+        <style>
+          @keyframes spin { 0% { transform: rotate(0deg);} 100% { transform: rotate(360deg);} }
+        </style>
+      `;
+      document.body.appendChild(loader);
+
+      setTimeout(() => {
+        window.open(googleUrl, '_blank');
+        setTimeout(() => {
+          if (loader && loader.parentNode) loader.parentNode.removeChild(loader);
+        }, 1200);
+      }, 700);
+    };
+
+    // Scroll to top button logic
+    const scrollBtn = document.getElementById("scrollTopBtn");
+    window.onscroll = function() {
+      const scrolled = window.scrollY || document.documentElement.scrollTop;
+      const docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      if (docHeight > 0 && scrolled / docHeight > 0.6) {
+        scrollBtn.style.display = "block";
+      } else {
+        scrollBtn.style.display = "none";
+      }
+    };
+    scrollBtn.onclick = function() {
+      window.scrollTo({top: 0, behavior: 'smooth'});
+    };
+
+    // Firebase config and initialization
+    const firebaseConfig = {
+      apiKey: "AIzaSyAUhgOrVsplzW_3n0LjOhEnrphola3_Vps",
+      authDomain: "cubehack25.firebaseapp.com",
+      projectId: "cubehack25",
+      storageBucket: "cubehack25.firebasestorage.app",
+      messagingSenderId: "874597277568",
+      appId: "1:874597277568:web:3882eedd7b3d40f68eeb65",
+      measurementId: "G-XSTTRGZS5N"
+    };
+    firebase.initializeApp(firebaseConfig);
+    if (typeof firebase.analytics === "function") {
+      firebase.analytics();
+    }
+  </script>
+</body>
+</html>
