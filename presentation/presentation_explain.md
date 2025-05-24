@@ -1,5 +1,5 @@
 # Hackathon Presentation Guidelines
-s
+
 ## English
 
 ### Presentation Requirements for CubeIncubation Mobile Hackathon 2025
