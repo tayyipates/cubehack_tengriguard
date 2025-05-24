@@ -290,6 +290,37 @@
       transform: translateY(-2px);
     }
     
+    /* Cookie Accepted Badge */
+    #cookieAcceptedBadge {
+      display: none;
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: rgba(255, 255, 255, 0.9);
+      color: #3a3a5a;
+      border-radius: 8px;
+      padding: 8px 12px;
+      font-size: 0.85em;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      z-index: 98;
+      border-left: 4px solid #4ade80;
+      font-family: 'Montserrat', Arial, sans-serif;
+      align-items: center;
+      gap: 8px;
+      transition: opacity 0.3s ease, transform 0.3s ease;
+      transform: translateY(0);
+      opacity: 1;
+    }
+    
+    #cookieAcceptedBadge.fadeOut {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    
+    #cookieAcceptedBadge.hidden {
+      display: none;
+    }
+    
     @media (max-width: 600px) {
       .cookie-modal-content {
         width: 92%;
@@ -344,7 +375,7 @@
         <li>📍 <b>Format:</b> On-site event. Project management and submissions via GitHub.</li>
         <li>💡 <b>UI/UX:</b> All designs must be prepared using Figma. Development via GitHub.</li>
         <li>🔧 <b>Technologies:</b> All used must be clearly stated in the README file.</li>
-        <li>📂 <b>Repository:</b> Public GitHub repo named <code>cubehack_projectname</code>.</li>
+        <li>📂 <b>Repository:</b> Private GitHub repo named <code>cubehack_projectname</code>.</li>
         <li>📝 <b>Documentation:</b> All docs, setup, and team details in README.</li>
         <li>🎥 <b>Demo:</b> Short demo video and Figma prototype are mandatory.</li>
       </ul>
@@ -354,7 +385,7 @@
       <ol>
         <li>Fork this repository to your personal GitHub account</li>
         <li>Rename the forked repository to <code>cubehack_projectname</code></li>
-        <li>Set repository visibility to <b>public</b></li>
+        <li>Set repository visibility to <b>private</b></li>
         <li>Add team members as collaborators</li>
         <li>Clone the repository locally when the hackathon starts</li>
       </ol>
@@ -366,7 +397,7 @@
         <li>Login to GitHub</li>
         <li>Fork the repository</li>
         <li>Rename your forked repository to <code>cubehack_yourprojectname</code></li>
-        <li>Check repository visibility is <b>public</b></li>
+        <li>Check repository visibility is <b>private</b></li>
         <li>Add team members as collaborators</li>
         <li>Clone the repository locally</li>
         <li>Verify the setup</li>
@@ -399,7 +430,7 @@
         <li>All designs must be made via Figma and the link must be provided.</li>
         <li>Code must be hosted on GitHub, properly structured, and well-commented.</li>
         <li>Repository name must follow this format: <code>cubehack_projectname</code></li>
-        <li>The repository must be <b>public</b>.</li>
+        <li>The repository must be <b>private</b>.</li>
         <li>Commit messages should be clear and meaningful.</li>
         <li>Development must reflect teamwork and collaboration.</li>
         <li>README must include participation terms, installation guide, and usage notes.</li>
@@ -443,7 +474,7 @@
     <div class="important">
       <h2>⚠️ Important Notes</h2>
       <ul>
-        <li>The repository must be <b>public</b>.</li>
+        <li>The repository must be <b>private</b>.</li>
         <li>Repository naming format: <code>cubehack_projectname</code></li>
         <li>The README file must include:
           <ul>
@@ -467,6 +498,14 @@
       Start coding and good luck! 🚀
     </div>
   
+  <!-- Add the Cookie Accepted Badge -->
+  <div id="cookieAcceptedBadge">
+    <span style="display:flex;align-items:center;gap:6px;">
+      <span style="color:#4ade80;font-size:1.2em;">✓</span>
+      <span id="cookieBadgeText">Cookies accepted</span>
+    </span>
+  </div>
+  
   <!-- Replace the footer cookie banner with a modal dialog -->
   <div id="cookieConsentModal">
     <div class="cookie-modal-content">
@@ -486,7 +525,7 @@
           <li>📍 <b>Format:</b> Fiziksel katılım. Proje yönetimi ve teslimatlar GitHub üzerinden yapılacaktır.</li>
           <li>💡 <b>Tüm tasarımlar:</b> Figma üzerinden hazırlanmalıdır. Kod geliştirme süreci GitHub üzerinden yürütülmelidir.</li>
           <li>🔧 <b>Kullanılan tüm teknolojiler:</b> README dosyasında açıkça belirtilmelidir.</li>
-          <li>📂 <b>Teslim edilecek projeler:</b> <code>cubehack_projectname</code> formatında adlandırılmış <b>herkese açık</b> bir GitHub deposunda olmalıdır.</li>
+          <li>📂 <b>Teslim edilecek projeler:</b> <code>cubehack_projectname</code> formatında adlandırılmış <b>private</b> bir GitHub deposunda olmalıdır.</li>
           <li>📝 <b>Dokümantasyon:</b> Tüm dokümantasyon, kurulum talimatları ve katılımcı bilgileri README dosyasında yer almalıdır.</li>
           <li>🎥 <b>Demo:</b> Uygulamayı tanıtan kısa bir video ve Figma tasarım prototipi zorunludur.</li>
         </ul>
@@ -496,7 +535,7 @@
         <ol>
           <li>Takım lideri bu depoyu kendi GitHub hesabına fork etmelidir</li>
           <li>Fork edilen deponun adı <code>cubehack_projectname</code> formatında değiştirilmelidir</li>
-          <li>Depo görünürlüğünün <b>herkese açık (public)</b> olarak ayarlandığından emin olunmalıdır</li>
+          <li>Depo görünürlüğünün <b>private</b> olarak ayarlandığından emin olunmalıdır</li>
           <li>Takım üyeleri, fork edilen depoya işbirlikçi olarak eklenmelidir</li>
           <li>Hackathon başladığında geliştirmeye başlamak için depo yerel bilgisayara klonlanmalıdır</li>
         </ol>
@@ -508,7 +547,7 @@
           <li>GitHub'a giriş yapın</li>
           <li>Depoyu fork edin</li>
           <li>Fork edilen deponuzu <code>cubehack_projeadiniz</code> olarak yeniden adlandırın</li>
-          <li>Depo görünürlüğünü kontrol edin (herkese açık olmalı)</li>
+          <li>Depo görünürlüğünü kontrol edin (private olmalı)</li>
           <li>Takım üyelerini işbirlikçi olarak ekleyin</li>
           <li>Depoyu yerel bilgisayarınıza klonlayın</li>
           <li>Kurulumu doğrulayın</li>
@@ -539,9 +578,9 @@
           <li>Teslim edilen uygulama çalışır ve test edilebilir durumda olmalıdır.</li>
           <li>Kullanılan tüm teknolojiler README dosyasında belirtilmelidir.</li>
           <li>Tüm tasarımlar Figma üzerinden yapılmalı ve bağlantı paylaşılmalıdır.</li>
-          <li>Kodlar GitHub’da barındırılmalı, yorumlanmış ve düzenli olmalıdır.</li>
+          <li>Kodlar GitHub'da barındırılmalı, yorumlanmış ve düzenli olmalıdır.</li>
           <li>Depo adı şu şekilde olmalıdır: <code>cubehack_projectname</code></li>
-          <li>Depo herkese <b>açık (public)</b> olmalıdır.</li>
+          <li>Depo <b>private</b> olmalıdır.</li>
           <li>Commit mesajları açıklayıcı ve düzenli olmalıdır.</li>
           <li>Geliştirme süreci takım içerisinde iş birliği ile yürütülmelidir.</li>
           <li>README dosyasında katılım koşulları, kurulum talimatları ve kullanım notları yer almalıdır.</li>
@@ -585,7 +624,7 @@
       <div class="important">
         <h2>⚠️ Dikkat Edilmesi Gerekenler</h2>
         <ul>
-          <li>Depo <b>herkese açık (public)</b> olmalıdır.</li>
+          <li>Depo <b>private</b> olmalıdır.</li>
           <li>Depo adı: <code>cubehack_projectname</code> formatında olmalıdır.</li>
           <li>README dosyasında:
             <ul>

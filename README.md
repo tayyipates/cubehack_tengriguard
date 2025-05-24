@@ -12,7 +12,7 @@
 ![OneSignal](https://img.shields.io/badge/OneSignal-EA0A2A?logo=onesignal&logoColor=white&style=for-the-badge)
 ![Supabase](https://img.shields.io/badge/Supabase-3ECF8E?logo=supabase&logoColor=white&style=for-the-badge)
 
-# Version 1.0.3
+# Version 1.0.4
 
 #EN
 
@@ -26,7 +26,7 @@
 * 📍 Format: On-site event. Project management and submissions must be handled via GitHub.
 * 💡 All UI/UX designs must be prepared using Figma. The development process must be carried out using GitHub.
 * 🔧 All technologies, frameworks, and tools used must be clearly stated in the README file.
-* 📂 Submitted projects must be hosted in a **public** GitHub repository named in the `cubehack_projectname` format.
+* 📂 Submitted projects must be hosted in a **private** GitHub repository named in the `cubehack_projectname` format.
 * 📝 All documentation, setup instructions, and team member details must be included in the README.
 * 🎥 A short demo video and the Figma prototype are mandatory.
 
@@ -35,9 +35,8 @@
 **Before the hackathon begins:**
 1. The team leader must fork this repository to their personal GitHub account
 2. Rename the forked repository to follow the `cubehack_projectname` format
-3. Make sure the repository visibility is set to **public**
+3. Make sure the repository visibility is set to **private**
 4. Add team members as collaborators to the forked repository
-5. Clone the repository locally to begin development once the hackathon starts
 
 **This forking process is mandatory** and will be used to verify that development started only after the hackathon's official start time. The original commit history from this template repository will be preserved, which helps organizers confirm compliance with the rules.
 
@@ -59,8 +58,8 @@
 
 4. **Check Repository Visibility**:
    - While still in "Settings", scroll down to the "Danger Zone"
-   - Ensure "Change repository visibility" shows the repository as "Public"
-   - If it's not public, click "Change visibility", select "Make public", and confirm
+   - Ensure "Change repository visibility" shows the repository as "Private"
+   - If it's not private, click "Change visibility", select "Make private", and confirm
 
 5. **Add Team Members as Collaborators**:
    - In the repository settings, click on "Collaborators and teams" in the left sidebar
@@ -128,7 +127,7 @@ Beginner-level projects are acceptable. Evaluation will be based on overall appl
 7. All designs must be made via Figma and the link must be provided.
 8. Code must be hosted on GitHub, properly structured, and well-commented.
 9. Repository name must follow this format: `cubehack_projectname`
-10. The repository must be **public**.
+10. The repository must be **private**.
 11. Commit messages should be clear and meaningful.
 12. Development must reflect teamwork and collaboration.
 13. README must include participation terms, installation guide, and usage notes.
@@ -177,7 +176,8 @@ At the end of the hackathon, the following items must be included in your GitHub
 
 ## ⚠️ Important Notes
 
-* The repository must be **public**.
+* The repository must be **private**.
+* **Repository visibility must remain private** during and after the hackathon. All repositories must stay private for security and intellectual property protection.
 * Repository naming format: `cubehack_projectname`
 * The README file must include:
 
@@ -213,7 +213,7 @@ Start coding and good luck! 🚀
 * 📍 Format: Fiziksel katılım. Proje yönetimi ve teslimatlar GitHub üzerinden yapılacaktır.
 * 💡 Tüm tasarımlar Figma üzerinden hazırlanmalıdır. Kod geliştirme süreci GitHub üzerinden yürütülmelidir.
 * 🔧 Kullanılan tüm teknolojiler, framework'ler ve araçlar README dosyasında açıkça belirtilmelidir.
-* 📂 Teslim edilecek projeler, `cubehack_projectname` formatında adlandırılmış **herkese açık** bir GitHub deposunda olmalıdır.
+* 📂 Teslim edilecek projeler, `cubehack_projectname` formatında adlandırılmış **private** bir GitHub deposunda olmalıdır.
 * 📝 Tüm dokümantasyon, kurulum talimatları ve katılımcı bilgileri README dosyasında yer almalıdır.
 * 🎥 Uygulamayı tanıtan kısa bir video ve Figma tasarım prototipi zorunludur.
 
@@ -222,7 +222,7 @@ Start coding and good luck! 🚀
 **Hackathon başlamadan önce:**
 1. Takım lideri bu depoyu (repository) kendi GitHub hesabına fork etmelidir
 2. Fork edilen deponun adı `cubehack_projectname` formatında değiştirilmelidir
-3. Depo görünürlüğünün **herkese açık (public)** olarak ayarlandığından emin olunmalıdır
+3. Depo görünürlüğünün **private** olarak ayarlandığından emin olunmalıdır
 4. Takım üyeleri, fork edilen depoya işbirlikçi (collaborator) olarak eklenmelidir
 5. Hackathon başladığında geliştirmeye başlamak için depo yerel bilgisayara klonlanmalıdır
 
@@ -246,8 +246,8 @@ Start coding and good luck! 🚀
 
 4. **Depo Görünürlüğünü Kontrol Edin**:
    - Hala "Settings" (Ayarlar) bölümündeyken, "Danger Zone" (Tehlike Bölgesi) kısmına kaydırın
-   - "Change repository visibility" (Depo görünürlüğünü değiştir) seçeneğinde deponun "Public" (Herkese açık) olarak gösterildiğinden emin olun
-   - Eğer herkese açık değilse, "Change visibility" (Görünürlüğü değiştir) düğmesine tıklayın, "Make public" (Herkese açık yap) seçeneğini seçin ve onaylayın
+   - "Change repository visibility" (Depo görünürlüğünü değiştir) seçeneğinde deponun "Private" (Özel) olarak gösterildiğinden emin olun
+   - Eğer private değilse, "Change visibility" (Görünürlüğü değiştir) düğmesine tıklayın, "Make private" (Özel yap) seçeneğini seçin ve onaylayın
 
 5. **Takım Üyelerini İşbirlikçi Olarak Ekleyin**:
    - Depo ayarlarında, sol kenar çubuğunda "Collaborators and teams" (İşbirlikçiler ve takımlar) seçeneğine tıklayın
@@ -313,7 +313,7 @@ Giriş seviyesi projeler kabul edilecektir. Değerlendirme genel uygulama kalite
 7. Tüm tasarımlar Figma üzerinden yapılmalı ve bağlantı paylaşılmalıdır.
 8. Kodlar GitHub’da barındırılmalı, yorumlanmış ve düzenli olmalıdır.
 9. Depo adı şu şekilde olmalıdır: `cubehack_projectname`
-10. Depo herkese **açık (public)** olmalıdır.
+10. Depo **private** olmalıdır.
 11. Commit mesajları açıklayıcı ve düzenli olmalıdır.
 12. Geliştirme süreci takım içerisinde iş birliği ile yürütülmelidir.
 13. README dosyasında katılım koşulları, kurulum talimatları ve kullanım notları yer almalıdır.
@@ -362,7 +362,8 @@ Hackathon sonunda aşağıdaki dosya ve içerikler GitHub deposuna yüklenmiş o
 
 ## ⚠️ Dikkat Edilmesi Gerekenler
 
-* Depo **herkese açık (public)** olmalıdır.
+* Depo **private** olmalıdır.
+* **Depo görünürlüğü hackathon sırasında ve sonrasında private kalmalıdır**. Tüm depolar güvenlik ve fikri mülkiyet koruması için private olarak kalmalıdır.
 * Depo adı: `cubehack_projectname` formatında olmalıdır.
 * README dosyasında:
 
