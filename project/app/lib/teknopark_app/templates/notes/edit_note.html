@@ -1,0 +1,279 @@
+    <style>
+        :root {
+            --primary-color: #1a4434;
+            --primary-light: #2a5544;
+            --text-light: #ffffff;
+            --text-dark: #333333;
+            --accent: #ffb74d;
+            --success: #4caf50;
+            --danger: #f44336;
+            --background: #f5f5f5;
+            --card-bg: #ffffff;
+            --input-bg: #ffffff;
+            --input-border: #e0e0e0;
+            --input-focus: #d0eed8;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--background);
+              width: 390px; /* iPhone 14 genişliği gibi sabit bir genişlik */
+  margin: 0 auto; /* Ortalamak için */
+
+            color: var(--text-dark);
+            padding-bottom: 70px;
+        }
+        .header {
+            background-color: var(--primary-color);
+            color: var(--text-light);
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        
+        .header h2 {
+            font-size: 1.2rem;
+            font-weight: 500;
+        }
+        
+        .back-button {
+            color: var(--text-light);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+        
+        .container {
+            padding: 15px;
+        }
+        
+        .page-title {
+            margin: 15px 0;
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .note-form {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--primary-color);
+        }
+        
+        .form-input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid var(--input-border);
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s, box-shadow 0.3s;
+            background-color: var(--input-bg);
+        }
+        
+        .form-input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 2px var(--input-focus);
+        }
+        
+        .form-textarea {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid var(--input-border);
+            border-radius: 8px;
+            font-size: 1rem;
+            min-height: 200px;
+            resize: vertical;
+            transition: border-color 0.3s, box-shadow 0.3s;
+            background-color: var(--input-bg);
+        }
+        
+        .form-textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 2px var(--input-focus);
+        }
+        
+        .save-button {
+            background-color: var(--primary-color);
+            color: var(--text-light);
+            border: none;
+            border-radius: 25px;
+            padding: 15px;
+            width: 100%;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+        
+        .save-button:hover {
+            background-color: var(--primary-light);
+        }
+        
+        .save-button:active {
+            transform: scale(0.98);
+        }
+        
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: var(--card-bg);
+            display: flex;
+            justify-content: space-around;
+            padding: 10px 0;
+            box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-size: 0.8rem;
+            color: #666;
+            text-decoration: none;
+        }
+        
+        .nav-item.active {
+            color: var(--primary-color);
+        }
+        
+        .nav-icon {
+            font-size: 1.5rem;
+            margin-bottom: 2px;
+        }
+        
+        .character-count {
+            text-align: right;
+            color: #777;
+            font-size: 0.8rem;
+            margin-top: 5px;
+        }
+        
+        .form-actions {
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+        }
+        
+        .cancel-button {
+            background-color: transparent;
+            color: var(--primary-color);
+            border: 1px solid var(--primary-color);
+            border-radius: 25px;
+            padding: 15px;
+            width: 100%;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+        
+        .cancel-button:active {
+            transform: scale(0.98);
+        }
+    </style>
+
+
+
+    <div class="header">
+        <a href="javascript:history.back()" class="back-button">
+            ← Geri
+        </a>
+        <h2>Yeni Not</h2>
+        <div style="width: 24px;"></div> <!-- placeholder for balance -->
+    </div>
+    <div class="container">
+        <h2 class="page-title">
+            <span>🆕</span> Notu Düzenle
+        </h2>
+<form method="post">
+    {% csrf_token %}
+            <div class="form-group">
+                <label for="title" class="form-label">Başlık:</label>
+                <input type="text" name="title" id="title" required class="form-input" value="{{ note.title}}" autofocus>
+            </div>
+
+            <div class="form-group">
+                <label for="content" class="form-label">İçerik:</label>
+                <textarea name="content" id="content" required class="form-textarea" placeholder="Notunuzu buraya yazın...">{{ note.content }}</textarea>
+                <div class="character-count" id="characterCount">0 karakter</div>
+            </div>
+
+            <div class="form-actions">
+                <button type="button" class="cancel-button" onclick="history.back()">İptal</button>
+                <button type="submit" class="save-button">
+                    <span>💾</span> Kaydet
+                </button>
+            </div>
+        </form>
+<script>
+    let formChanged = false;
+
+    // Formdaki alanlar değişince "değişti" olarak işaretle
+    document.querySelectorAll('input, textarea').forEach(input => {
+        input.addEventListener('input', () => {
+            formChanged = true;
+        });
+    });
+
+    // Form gönderilince değişiklik işaretini kaldır
+    document.querySelector('form').addEventListener('submit', () => {
+        formChanged = false;
+    });
+
+    // Sayfadan çıkarken uyarı ver
+    window.addEventListener('beforeunload', function (e) {
+        if (formChanged) {
+            const confirmationMessage = 'Notunuz kaydedilmedi. Sayfadan çıkmak istediğinizden emin misiniz? 😢';
+            e.preventDefault();
+            e.returnValue = confirmationMessage;
+            return confirmationMessage;
+        }
+    });
+
+    // İptal butonuna özel uyarı
+    document.querySelector('.cancel-button').addEventListener('click', function (e) {
+        if (formChanged) {
+            const confirmExit = confirm("Notunuzda değişiklik var. Kaydetmeden çıkmak istiyor musunuz? 😰");
+            if (!confirmExit) {
+                e.preventDefault(); // çıkışı engelle
+                return;
+            }
+        }
+        history.back();
+    });
+</script>
+
+</div>

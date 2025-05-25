@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <style>
+        :root {
+            --primary-color: #1a4434;
+            --primary-light: #2a5544;
+            --text-light: #ffffff;
+            --text-dark: #333333;
+            --accent: #ffb74d;
+            --success: #4caf50;
+            --danger: #f44336;
+            --background: #f5f5f5;
+            --card-bg: #ffffff;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--background);
+              width: 390px; /* iPhone 14 genişliği gibi sabit bir genişlik */
+  margin: 0 auto; /* Ortalamak için */
+
+            color: var(--text-dark);
+            padding-bottom: 70px;
+        }
+        
+        .header {
+            background-color: var(--primary-color);
+            color: var(--text-light);
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            position: relative;
+        }
+        
+        .header h2 {
+            font-size: 1.2rem;
+            font-weight: 500;
+        }
+        
+        .profile-menu {
+            position: absolute;
+            top: 65px;
+            right: 10px;
+            background-color: var(--card-bg);
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            display: none;
+            z-index: 100;
+        }
+        
+        .profile-menu.active {
+            display: block;
+        }
+        
+        .profile-menu a {
+            display: block;
+            padding: 12px 20px;
+            text-decoration: none;
+            color: var(--text-dark);
+            border-bottom: 1px solid #eee;
+        }
+        
+        .profile-menu a:last-child {
+            border-bottom: none;
+        }
+        
+        .avatar {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            background-color: var(--primary-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        
+        .container {
+            padding: 15px;
+        }
+        
+        .start-match-btn {
+            display: block;
+            background-color: var(--primary-color);
+            color: var(--text-light);
+            border: none;
+            border-radius: 25px;
+            padding: 15px;
+            width: 100%;
+            font-size: 1rem;
+            font-weight: 500;
+            margin: 20px 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .start-match-btn:hover {
+            background-color: var(--primary-light);
+        }
+        
+        .matches-title {
+            margin: 20px 0 15px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+        
+        .match-card {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            padding: 15px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        
+        .match-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+        
+        .match-date {
+            font-weight: 600;
+        }
+        
+        .table-info {
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        .participant {
+            display: flex;
+            align-items: center;
+            margin: 10px 0;
+        }
+        
+        .participant-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: var(--primary-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+        
+        .participant-name {
+            font-weight: 500;
+        }
+        
+        .message {
+            padding: 10px;
+            background-color: #fff9e6;
+            border-left: 3px solid var(--accent);
+            margin: 10px 0;
+            color: #ad6700;
+            font-size: 0.9rem;
+        }
+        
+        .btn {
+            padding: 10px 15px;
+            border: none;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            cursor: pointer;
+            margin-top: 10px;
+            display: inline-flex;
+            align-items: center;
+            transition: background-color 0.3s;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: var(--text-light);
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            border: 1px solid var(--primary-color);
+            color: var(--primary-color);
+        }
+        
+        .btn-danger {
+            background-color: var(--danger);
+            color: var(--text-light);
+        }
+        
+        .status {
+            display: flex;
+            align-items: center;
+            margin-top: 10px;
+            color: var(--success);
+            font-weight: 500;
+        }
+        
+        .status-icon {
+            margin-right: 5px;
+        }
+        
+        .expired-notice {
+            background-color: #ffebee;
+            border-left: 3px solid var(--danger);
+            padding: 10px;
+            margin: 10px 0;
+            color: var(--danger);
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+        
+        .meeting-status {
+            background-color: #e8f5e9;
+            padding: 8px;
+            border-radius: 15px;
+            display: inline-flex;
+            align-items: center;
+            margin: 10px 0;
+            font-size: 0.9rem;
+            color: var(--success);
+        }
+        
+        .no-matches {
+            text-align: center;
+            padding: 30px 0;
+            color: #666;
+        }
+        
+        .action-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 15px;
+        }
+        
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: var(--card-bg);
+            display: flex;
+            justify-content: space-around;
+            padding: 10px 0;
+            box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-size: 0.8rem;
+            color: #666;
+            text-decoration: none;
+        }
+        
+        .nav-item.active {
+            color: var(--primary-color);
+        }
+        
+        .nav-icon {
+            font-size: 1.5rem;
+            margin-bottom: 2px;
+        }
+    </style>
+</head>
+<body>
+    {% if user.role == 'investor' or user.role == 'entrepreneur' %}
+    <div class="header">
+        <h2>Hoşgeldin {{ user.first_name }}</h2>
+        <div class="avatar" id="profileToggle">
+            <div class="burger-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        <style>
+            .burger-menu {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 4px;
+}
+
+.burger-menu span {
+    display: block;
+    width: 18px;
+    height: 2px;
+    background-color: white;
+    border-radius: 1px;
+}
+
+        </style>
+        <div class="profile-menu" id="profileMenu">
+            <a href="/dashboard/">Anasayfa</a>
+            <a href="/eslesmelerim/">Eşleşmelerim</a>
+            <a href="/profile/">Profil</a>
+            <a href="/notlarim/">Notlarım</a>
+            <a href="/logout/">Çıkış</a>
+        </div>
+    </div>
+    
+    <div class="container">
+        <h2>Hoş geldin {{ user.first_name }}! 💫</h2>
+                        <p>Anasayfa üzerinden eşleşebileceğiniz şirketleri bulabilir, Eşleşmelerim sayfasından
+eşleştiğiniz şirketler ile toplantı saat ve masa numaranızı takip edebilirsiniz. Lütfen
+eşleşme kutucuklarındaki bildirimleri takip edin</p>
+            <a href="{% url 'start_match' %}">
+        
+        <button class="start-match-btn">Eşleşmeyi Başlat 🚀</button>
+            </a>
+
+        {% if match_data %}
+            <h3 class="matches-title">Tüm Randevuların 📅</h3>
+            
+{% for item in match_data %}
+    <div class="match-card">
+        <div class="match-header">
+            <div class="match-date">{{ item.match.start_datetime|date:"Y-m-d H:i" }}</div>
+        </div>
+        
+        <div class="table-info">Masa: {{ item.match.table_number }}</div>
+        
+        <div class="participant">
+                            {% if item.other_user.sirket_logosu %}
+                <img src="{{ item.other_user.sirket_logosu.url }}" style="width: 40px; border-radius: 17px; position: relative; right: 3px;">
+                    {% else %}
+            <div class="participant-avatar">
+                {{ item.other_user.first_name|slice:":1" }}
+            </div>
+            {% endif %}
+            <div class="participant-name">{{ item.other_user.first_name }}</div>
+        </div>
+        
+        {% if item.other_user.sirket %}
+        <p>Şirket : {{ item.other_user.sirket }}</p>
+        {% endif %}
+        {% if item.other_user.sirket_bilgileri %}
+        <p>Şirket Hakkında : {{ item.other_user.sirket_bilgileri }}</p>
+        {% endif %}
+        {% if item.other_user.iletisim_emaili %}
+        <p>İletişim Maili : {{ item.other_user.iletisim_emaili }}</p>
+        {% endif %}
+        {% if item.message %}
+            <div class="message">{{ item.message }}</div>
+        {% endif %}
+        
+        <div class="action-buttons">
+{% if item.match.status == 'pending' %}
+    {% if request.user == item.match.investor and not item.match.investor_accepted %}
+        <form method="post" action="{% url 'accepted_match' item.match.id %}">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-success">✅ Eşleşmeyi Kabul Et</button>
+        </form>
+        <form method="post" action="{% url 'rejected_match' item.match.id %}">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger">❌ Eşleşmeyi Reddet</button>
+        </form>
+    {% elif request.user == item.match.entrepreneur and not item.match.entrepreneur_accepted %}
+        <form method="post" action="{% url 'accepted_match' item.match.id %}">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-success">✅ Eşleşmeyi Kabul Et</button>
+        </form>
+        <form method="post" action="{% url 'rejected_match' item.match.id %}">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger">❌ Eşleşmeyi Reddet</button>
+        </form>
+    {% else %}
+        <div class="status">
+            <span class="status-icon">⏳</span>
+            Karşı tarafın eşleşmeyi kabul etmesi bekleniyor...
+        </div>
+    {% endif %}
+{% endif %}
+{% if item.match.status == 'accepted' %}
+    {% if item.match.entrepreneur_arrived and not item.match.investor_arrived %}
+        {% if request.user == item.match.investor %}
+            <!-- Yatırımcı henüz gelmediyse butonu göster -->
+            {% if not item.user_arrived %}
+                <form method="post" action="{% url 'masaya_geldim' item.match.id %}">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-primary">🪑 Masaya Geldim</button>
+                </form>
+            {% else %}
+                <div class="status">✅ Masaya geldin!</div>
+            {% endif %}
+        {% else %}
+            <div class="status">⏳ Yatırımcı bekleniyor...</div>
+        {% endif %}
+    
+    {% elif item.match.investor_arrived and not item.match.entrepreneur_arrived %}
+        {% if request.user == item.match.entrepreneur %}
+            {% if not item.user_arrived %}
+                <form method="post" action="{% url 'masaya_geldim' item.match.id %}">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-primary">🪑 Masaya Geldim</button>
+                </form>
+            {% else %}
+                <div class="status">✅ Masaya geldin!</div>
+            {% endif %}
+        {% else %}
+            <div class="status">⏳ Girişimci bekleniyor...</div>
+        {% endif %}
+
+
+    {% else %}
+        {% if not item.user_arrived %}
+            <form method="post" action="{% url 'masaya_geldim' item.match.id %}">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-primary">🪑 Masaya Geldim</button>
+            </form>
+        {% else %}
+            <div class="status">✅ Masaya geldin!</div>
+        {% endif %}
+    {% endif %}
+{% endif %}
+
+            
+
+            
+            {% if item.match.meeting_started %}
+                <div class="meeting-status">
+                    <span class="status-icon">🔥</span> Toplantı Başladı!
+                </div>
+                
+                {% if item.match.meeting_expired %}
+                    <div class="expired-notice">
+                        <span class="status-icon">⏳</span> Süreniz dolmuştur. Lütfen "Toplantıyı Bitir" butonuna tıklayın ve diğer kullanıcılar için masayı boşaltın.
+                    </div>
+                {% endif %}
+                
+            {% endif %}
+        </div>
+                        {% if not item.match.meeting_ended %}
+                    <form method="post" action="{% url 'toplanti_bitir' item.match.id %}">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-danger">
+                            <span class="status-icon">🚪</span> Toplantıyı Bitir
+                        </button>
+                    </form>
+                {% else %}
+                    <div class="status">
+                        <span class="status-icon">✅</span> Toplantı sona erdi.
+                    </div>
+                {% endif %}
+                
+                {% if item.match.meeting_ended and not item.evaluation_exists %}
+                    <a href="{% url 'degerlendirme_formu' item.match.id %}">
+                        <button class="btn btn-outline">
+                            <span class="status-icon">✍️</span> Değerlendirme Yap
+                        </button>
+                    </a>
+                {% elif item.evaluation_exists %}
+                    <div class="status">
+                        <span class="status-icon">✅</span> Değerlendirme yapıldı.
+                    </div>
+                {% endif %}
+    </div>
+    
+{% endfor %}
+        {% else %}
+            <div class="no-matches">
+                <p>Henüz eşleşmen yok 😢</p>
+            </div>
+        {% endif %}
+    </div>
+    
+
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const profileToggle = document.getElementById('profileToggle');
+            const profileMenu = document.getElementById('profileMenu');
+            
+            profileToggle.addEventListener('click', function() {
+                profileMenu.classList.toggle('active');
+            });
+            
+            // Close menu when clicking outside
+            document.addEventListener('click', function(event) {
+                if (!profileToggle.contains(event.target) && !profileMenu.contains(event.target)) {
+                    profileMenu.classList.remove('active');
+                }
+            });
+        });
+    </script>
+    {% endif %}
+
+
+    {% if user.role == 'teknopark' %}
+
+    <div class="header">
+        <h2>Hoşgeldin {{ user.first_name }}</h2>
+        <div class="avatar" id="profileToggle">
+            <div class="burger-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        <style>
+            .burger-menu {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 4px;
+}
+
+.burger-menu span {
+    display: block;
+    width: 18px;
+    height: 2px;
+    background-color: white;
+    border-radius: 1px;
+}
+
+        </style>        <div class="profile-menu" id="profileMenu">
+            <a href="/dashboard/">Anasayfa</a>
+            <a href="/formlar/">Form Değerlendirme</a>
+            <a href="/liste/girisimciler/">Girişimciler</a>
+            <a href="/liste/yatirimcilar/">Yatırımcılar</a>
+            <a href="/logout/">Çıkış</a>
+        </div>
+    </div>
+                <a href="/teknopark/saat/">
+        
+        <button class="start-match-btn">Toplantı Düzenle</button>
+            </a>
+
+
+                <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const profileToggle = document.getElementById('profileToggle');
+            const profileMenu = document.getElementById('profileMenu');
+            
+            profileToggle.addEventListener('click', function() {
+                profileMenu.classList.toggle('active');
+            });
+            
+            // Close menu when clicking outside
+            document.addEventListener('click', function(event) {
+                if (!profileToggle.contains(event.target) && !profileMenu.contains(event.target)) {
+                    profileMenu.classList.remove('active');
+                }
+            });
+        });
+    </script>
+    {% endif %}
+</body>
+</html>

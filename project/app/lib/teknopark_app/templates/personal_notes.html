@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Notlarım</title>
+</head>
+<body>
+    <h2>📝 Notlarım</h2>
+    <form method="post">
+        {% csrf_token %}
+        <textarea name="content" rows="15" cols="80" placeholder="Görüşme sırasında notlarını buraya yazabilirsin...">{{ note.content }}</textarea>
+        <br><br>
+        <button type="submit">Kaydet 💾</button>
+    </form>
+
+    {% if messages %}
+        {% for message in messages %}
+            <p style="color: green;">{{ message }}</p>
+        {% endfor %}
+    {% endif %}
+</body>
+</html>

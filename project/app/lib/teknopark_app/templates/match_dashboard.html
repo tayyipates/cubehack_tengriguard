@@ -1,0 +1,43 @@
+
+
+{% block content %}
+<h2 class="text-2xl font-bold mb-4">Eşleşmelerim</h2>
+
+{% for match in matches %}
+  <div class="border p-4 rounded-lg mb-4 shadow-md relative">
+    <h3 class="text-lg font-semibold">
+      {{ match.investor.get_full_name }} ❤⃣ {{ match.entrepreneur.get_full_name }}
+    </h3>
+    <p class="text-sm text-gray-500">Tarih: {{ match.start_datetime }}</p>
+    <p class="text-sm text-green-600 font-semibold absolute top-2 right-2">Eşleşme Kabul Edildi</p>
+
+    {% if match.show_arrived_button %}
+      <form method="post" action="{% url 'mark_arrived' match.id %}">
+        {% csrf_token %}
+        <button type="submit" class="mt-2 bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded">
+          Masaya Geldim
+        </button>
+      </form>
+    {% endif %}
+
+    {% if match.meeting_started %}
+      <p class="text-yellow-500 mt-2 font-medium">Toplantınız başladı! ⏳</p>
+      <form method="post" action="{% url 'end_meeting' match.id %}">
+        {% csrf_token %}
+        <button type="submit" class="mt-2 bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded">
+          Toplantıyı Bitir
+        </button>
+      </form>
+    {% endif %}
+
+    {% if match.meeting_expired %}
+      <p class="text-red-600 mt-2 font-semibold">
+        Toplantınızın süresi dolmuş ya da taraflardan biri gelmedi ❤️
+      </p>
+    {% endif %}
+  </div>
+{% empty %}
+  <p>Henüz hiç eşleşmeniz yok 😢</p>
+{% endfor %}
+
+{% endblock %}

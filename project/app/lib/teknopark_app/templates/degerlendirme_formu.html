@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Değerlendirme Formu</title>
+    <style>
+        :root {
+            --primary-color: #1a4434;
+            --primary-light: #2a5544;
+            --text-light: #ffffff;
+            --text-dark: #333333;
+            --accent: #ffb74d;
+            --success: #4caf50;
+            --danger: #f44336;
+            --background: #f5f5f5;
+            --card-bg: #ffffff;
+            --input-bg: #ffffff;
+            --input-border: #e0e0e0;
+            --input-focus: #d0eed8;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--background);
+            width: 390px;
+            margin: 0 auto;
+            color: var(--text-dark);
+            padding-bottom: 70px;
+        }
+        
+        .header {
+            background-color: var(--primary-color);
+            color: var(--text-light);
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        
+        .header h2 {
+            font-size: 1.2rem;
+            font-weight: 500;
+        }
+        
+        .back-button {
+            color: var(--text-light);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+        
+        .container {
+            padding: 15px;
+        }
+        
+        .page-title {
+            margin: 15px 0;
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background-color: var(--primary-color);
+            color: var(--text-light);
+            padding: 20px 15px;
+            border-radius: 12px 12px 0 0;
+            margin-bottom: 0;
+        }
+        
+        .page-title-icon {
+            font-size: 1.8rem;
+        }
+        
+        .evaluation-form {
+            background-color: var(--card-bg);
+            border-radius: 0 0 12px 12px;
+            padding: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+        }
+        
+        .form-label {
+            display: block;
+            margin-bottom: 12px;
+            font-weight: 500;
+            color: var(--primary-color);
+            font-size: 1rem;
+        }
+        
+        .rating-container {
+            display: flex;
+            justify-content: space-between;
+            background-color: var(--background);
+            border-radius: 25px;
+            padding: 5px;
+            margin-top: 8px;
+        }
+        
+        .rating-option {
+            flex: 1;
+            text-align: center;
+        }
+        
+        .rating-option input[type="radio"] {
+            display: none;
+        }
+        
+        .rating-option label {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 10px 0;
+            cursor: pointer;
+            border-radius: 20px;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+        
+        .rating-option input[type="radio"]:checked + label {
+            background-color: var(--primary-color);
+            color: var(--text-light);
+            transform: scale(1);
+        }
+        
+        .rating-value {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 2px;
+        }
+        
+        .rating-star {
+            font-size: 0.8rem;
+            color: var(--accent);
+        }
+        
+        .submit-button {
+            background-color: var(--primary-color);
+            color: var(--text-light);
+            border: none;
+            border-radius: 25px;
+            padding: 15px;
+            width: 100%;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+            transition: background-color 0.3s, transform 0.2s;
+            margin-top: 15px;
+        }
+        
+        .submit-button:hover {
+            background-color: var(--primary-light);
+        }
+        
+        .submit-button:active {
+            transform: scale(0.98);
+        }
+        
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: var(--card-bg);
+            display: flex;
+            justify-content: space-around;
+            padding: 10px 0;
+            box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-size: 0.8rem;
+            color: #666;
+            text-decoration: none;
+        }
+        
+        .nav-item.active {
+            color: var(--primary-color);
+        }
+        
+        .nav-icon {
+            font-size: 1.5rem;
+            margin-bottom: 2px;
+        }
+        
+        .progress-bar {
+            height: 5px;
+            background-color: var(--input-border);
+            border-radius: 3px;
+            margin: 20px 0;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background-color: var(--primary-color);
+            width: 0%;
+            transition: width 0.5s;
+        }
+        
+        .section-divider {
+            border-top: 1px solid var(--input-border);
+            margin: 25px 0;
+        }
+        
+        .role-tag {
+            display: inline-block;
+            background-color: var(--accent);
+            color: var(--text-dark);
+            padding: 3px 10px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <a href="/dashboard/" class="back-button">
+            <span>&#8592;</span>
+            <span style="margin-left: 5px;">Geri</span>
+        </a>
+        <h2>Değerlendirme</h2>
+        <div style="width: 20px;"></div>
+    </div>
+    
+    <div class="container">
+        <div class="page-title">
+            <span>Toplantı Değerlendirme Formu</span>
+            <span class="page-title-icon">📝</span>
+        </div>
+        
+        <div class="evaluation-form">
+            {% if role == "investor" %}
+                <div class="role-tag">Yatırımcı Formu</div>
+            {% elif role == "entrepreneur" %}
+                <div class="role-tag">Girişimci Formu</div>
+            {% endif %}
+            
+            <div class="progress-bar">
+                <div class="progress-fill" id="progress-fill"></div>
+            </div>
+            
+            <form method="post" id="evaluation-form">
+                {% csrf_token %}
+                
+                <div class="form-group" id="question-1">
+                    <label class="form-label">Genel Memnuniyet:</label>
+                    <div class="rating-container">
+                        {% for i in "12345" %}
+                            <div class="rating-option">
+                                <input type="radio" name="overall_satisfaction" id="overall_satisfaction_{{ i }}" value="{{ i }}" required>
+                                <label for="overall_satisfaction_{{ i }}">
+                                    <span class="rating-value">{{ i }}</span>
+                                    <span class="rating-star">
+                                        {% if i == "1" %}★{% endif %}
+                                        {% if i == "2" %}★★{% endif %}
+                                        {% if i == "3" %}★★★{% endif %}
+                                        {% if i == "4" %}★★★★{% endif %}
+                                        {% if i == "5" %}★★★★★{% endif %}
+                                    </span>
+                                </label>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                
+                <div class="form-group" id="question-2">
+                    <label class="form-label">Zaman Verimliliği:</label>
+                    <div class="rating-container">
+                        {% for i in "12345" %}
+                            <div class="rating-option">
+                                <input type="radio" name="time_efficiency" id="time_efficiency_{{ i }}" value="{{ i }}" required>
+                                <label for="time_efficiency_{{ i }}">
+                                    <span class="rating-value">{{ i }}</span>
+                                    <span class="rating-star">
+                                        {% if i == "1" %}★{% endif %}
+                                        {% if i == "2" %}★★{% endif %}
+                                        {% if i == "3" %}★★★{% endif %}
+                                        {% if i == "4" %}★★★★{% endif %}
+                                        {% if i == "5" %}★★★★★{% endif %}
+                                    </span>
+                                </label>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                
+                {% if role == "investor" %}
+                    <div class="form-group" id="question-3">
+                        <label class="form-label">Fikir Potansiyeli:</label>
+                        <div class="rating-container">
+                            {% for i in "12345" %}
+                                <div class="rating-option">
+                                    <input type="radio" name="idea_potential" id="idea_potential_{{ i }}" value="{{ i }}" required>
+                                    <label for="idea_potential_{{ i }}">
+                                        <span class="rating-value">{{ i }}</span>
+                                        <span class="rating-star">
+                                            {% if i == "1" %}★{% endif %}
+                                            {% if i == "2" %}★★{% endif %}
+                                            {% if i == "3" %}★★★{% endif %}
+                                            {% if i == "4" %}★★★★{% endif %}
+                                            {% if i == "5" %}★★★★★{% endif %}
+                                        </span>
+                                    </label>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    
+                    <div class="form-group" id="question-4">
+                        <label class="form-label">Sunum Etkililiği:</label>
+                        <div class="rating-container">
+                            {% for i in "12345" %}
+                                <div class="rating-option">
+                                    <input type="radio" name="presentation_effectiveness" id="presentation_effectiveness_{{ i }}" value="{{ i }}" required>
+                                    <label for="presentation_effectiveness_{{ i }}">
+                                        <span class="rating-value">{{ i }}</span>
+                                        <span class="rating-star">
+                                            {% if i == "1" %}★{% endif %}
+                                            {% if i == "2" %}★★{% endif %}
+                                            {% if i == "3" %}★★★{% endif %}
+                                            {% if i == "4" %}★★★★{% endif %}
+                                            {% if i == "5" %}★★★★★{% endif %}
+                                        </span>
+                                    </label>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                {% elif role == "entrepreneur" %}
+                    <div class="form-group" id="question-3">
+                        <label class="form-label">İfade Özgürlüğü:</label>
+                        <div class="rating-container">
+                            {% for i in "12345" %}
+                                <div class="rating-option">
+                                    <input type="radio" name="expression_opportunity" id="expression_opportunity_{{ i }}" value="{{ i }}" required>
+                                    <label for="expression_opportunity_{{ i }}">
+                                        <span class="rating-value">{{ i }}</span>
+                                        <span class="rating-star">
+                                            {% if i == "1" %}★{% endif %}
+                                            {% if i == "2" %}★★{% endif %}
+                                            {% if i == "3" %}★★★{% endif %}
+                                            {% if i == "4" %}★★★★{% endif %}
+                                            {% if i == "5" %}★★★★★{% endif %}
+                                        </span>
+                                    </label>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    
+                    <div class="form-group" id="question-4">
+                        <label class="form-label">Geri Bildirim Kalitesi:</label>
+                        <div class="rating-container">
+                            {% for i in "12345" %}
+                                <div class="rating-option">
+                                    <input type="radio" name="constructive_feedback" id="constructive_feedback_{{ i }}" value="{{ i }}" required>
+                                    <label for="constructive_feedback_{{ i }}">
+                                        <span class="rating-value">{{ i }}</span>
+                                        <span class="rating-star">
+                                            {% if i == "1" %}★{% endif %}
+                                            {% if i == "2" %}★★{% endif %}
+                                            {% if i == "3" %}★★★{% endif %}
+                                            {% if i == "4" %}★★★★{% endif %}
+                                            {% if i == "5" %}★★★★★{% endif %}
+                                        </span>
+                                    </label>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    
+                    <div class="form-group" id="question-5">
+                        <label class="form-label">İlgili Davranış:</label>
+                        <div class="rating-container">
+                            {% for i in "12345" %}
+                                <div class="rating-option">
+                                    <input type="radio" name="investor_interest" id="investor_interest_{{ i }}" value="{{ i }}" required>
+                                    <label for="investor_interest_{{ i }}">
+                                        <span class="rating-value">{{ i }}</span>
+                                        <span class="rating-star">
+                                            {% if i == "1" %}★{% endif %}
+                                            {% if i == "2" %}★★{% endif %}
+                                            {% if i == "3" %}★★★{% endif %}
+                                            {% if i == "4" %}★★★★{% endif %}
+                                            {% if i == "5" %}★★★★★{% endif %}
+                                        </span>
+                                    </label>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                {% endif %}
+                
+                <button type="submit" class="submit-button">
+                    <span>Gönder</span>
+                    <span>✅</span>
+                </button>
+            </form>
+        </div>
+    </div>
+    
+
+    
+    <script>
+        // İlerleme çubuğunu güncelleme
+        function updateProgress() {
+            const form = document.getElementById('evaluation-form');
+            const inputs = form.querySelectorAll('input[type="radio"]');
+            const totalGroups = document.querySelectorAll('.form-group').length;
+            let completedGroups = 0;
+            
+            // Her bir soru grubu için 
+            for (let i = 1; i <= totalGroups; i++) {
+                const questionInputs = form.querySelectorAll(`#question-${i} input[type="radio"]`);
+                const checked = Array.from(questionInputs).some(input => input.checked);
+                if (checked) completedGroups++;
+            }
+            
+            // İlerleme yüzdesini hesapla
+            const percentage = (completedGroups / totalGroups) * 100;
+            document.getElementById('progress-fill').style.width = `${percentage}%`;
+        }
+        
+        // Tüm radio düğmelerinin değişimini dinle
+        document.querySelectorAll('input[type="radio"]').forEach(input => {
+            input.addEventListener('change', updateProgress);
+        });
+        
+        // Sayfa yüklendiğinde ilerlemeyi güncelle
+        document.addEventListener('DOMContentLoaded', updateProgress);
+    </script>
+</body>
+</html>

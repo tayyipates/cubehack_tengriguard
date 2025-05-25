@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head><title>Başka Kullanıcı Bul</title></head>
+<body>
+    <h2>Başka Kullanıcı</h2>
+    {% if matched_user %}
+        <p>Yeni kullanıcı:</p>
+        <ul>
+            <li>Adı: {{ matched_user.username }}</li>
+            <li>Rolü: {{ matched_user.role }}</li>
+        </ul>
+        <form method="get" action="{% url 'start_match' %}">
+            <input type="hidden" name="exclude" value="{{ matched_user.id }}">
+            <button type="submit" class="action-button secondary-button">Bu kullanıcıyla eşleş</button>
+        </form>
+    {% else %}
+        <p>Başka kullanıcı bulunamadı. Lütfen tekrar deneyin.</p>
+    {% endif %}
+    <a href="{% url 'dashboard' %}">Geri dön</a>
+</body>
+</html>

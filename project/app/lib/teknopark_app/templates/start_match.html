@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eşleşmeyi Başlat</title>
+    <style>
+        :root {
+            --primary-color: #1a4434;
+            --primary-light: #2a5544;
+            --text-light: #ffffff;
+            --text-dark: #333333;
+            --accent: #ffb74d;
+            --success: #4caf50;
+            --danger: #f44336;
+            --background: #f5f5f5;
+            --card-bg: #ffffff;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--background);
+              width: 390px; /* iPhone 14 genişliği gibi sabit bir genişlik */
+  margin: 0 auto; /* Ortalamak için */
+
+            color: var(--text-dark);
+            padding-bottom: 70px;
+        }
+        
+        .header {
+            background-color: var(--primary-color);
+            color: var(--text-light);
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        
+        .header h2 {
+            font-size: 1.2rem;
+            font-weight: 500;
+        }
+        
+        .back-button {
+            color: var(--text-light);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+        
+        .container {
+            padding: 15px;
+        }
+        
+        .page-title {
+            margin: 15px 0;
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            text-align: center;
+        }
+        
+        .user-card {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        
+        .user-info {
+            margin-bottom: 15px;
+        }
+        
+        .info-row {
+            display: flex;
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .info-row:last-child {
+            border-bottom: none;
+        }
+        
+        .info-label {
+            font-weight: 600;
+            width: 80px;
+            color: var(--primary-color);
+        }
+        
+        .info-value {
+            flex: 1;
+        }
+        
+        .match-form {
+            margin-top: 15px;
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--primary-color);
+        }
+        
+        .form-select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background-color: white;
+            font-size: 1rem;
+            color: var(--text-dark);
+            appearance: none;
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231a4434' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: right 12px center;
+            background-size: 16px;
+        }
+        
+        .form-select option {
+            padding: 8px;
+        }
+        
+        .form-select option:disabled {
+            color: #ccc;
+            background-color: #f5f5f5;
+        }
+        
+        .match-button {
+            background-color: var(--primary-color);
+            color: var(--text-light);
+            border: none;
+            border-radius: 25px;
+            padding: 15px;
+            width: 100%;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .match-button:hover {
+            background-color: var(--primary-light);
+        }
+        
+        .match-icon {
+            margin-right: 8px;
+        }
+        
+        .no-matches {
+            text-align: center;
+            padding: 30px 0;
+            color: var(--danger);
+            font-weight: 500;
+            background-color: #ffebee;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+        
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: var(--card-bg);
+            display: flex;
+            justify-content: space-around;
+            padding: 10px 0;
+            box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-size: 0.8rem;
+            color: #666;
+            text-decoration: none;
+        }
+        
+        .nav-item.active {
+            color: var(--primary-color);
+        }
+        
+        .nav-icon {
+            font-size: 1.5rem;
+            margin-bottom: 2px;
+        }
+        
+        .user-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: var(--primary-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin-right: 15px;
+        }
+        
+        .user-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .user-name {
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <a href="javascript:history.back()" class="back-button">
+            ← Geri
+        </a>
+        <h2>Eşleşmeyi Başlat</h2>
+        <div style="width: 24px;"></div> <!-- placeholder for balance -->
+    </div>
+    
+    <div class="container">
+        <h2 class="page-title">Uygun Kişilerle Eşleş</h2>
+        
+{% if candidates %}
+    {% for user in candidates %}
+        <div class="user-card">
+            <div class="user-header">
+                {% if user.sirket_logosu %}
+                <img src="{{ user.sirket_logosu.url }}" style="width: 40px; border-radius: 17px; position: relative; right: 3px;">
+                    {% else %}
+                                    <div class="user-avatar">
+                    {{ user.first_name|slice:":1" }}
+                                    </div>
+
+                    {% endif %}
+                <div class="user-name">
+                    {{ user.first_name }} {{ user.last_name }}
+                </div>
+            </div>
+            
+            <div class="user-info">
+                <div class="info-row">
+                    <div class="info-label">Email:</div>
+                    <div class="info-value">{{ user.iletisim_emaili }}</div>
+                </div>
+                <div class="info-row">
+                    <div class="info-label">Şirket:</div>
+                    <div class="info-value">{{ user.sirket }}</div>
+                </div>
+                <div class="info-row">
+                    <div class="info-label">Şirket Hakkında:</div>
+                    <div class="info-value">{{ user.sirket_bilgileri }}</div>
+                </div>
+                <div class="info-row">
+                    <div class="info-label">Rol:</div>
+                    <div class="info-value">{{ user.get_role_display }}</div>
+                </div>
+                <div class="info-row">
+                    <div class="info-label">Kategori: </div> 
+                    <div class="info-value">
+                        {% for kategori in user.categories.all %}
+                            {{ kategori.name }}{% if not forloop.last %}, {% endif %}
+                        {% empty %}
+                            Kategori yok 😢
+                        {% endfor %}
+                    </div>
+                </div>
+
+                {% if user.role == 'entrepreneur' and user.talep_edilen_yatirim %}
+                    <div class="info-row">
+                        <div class="info-label">Talep Edilen Yatırım 💸:</div>
+                        <div class="info-value">${{ user.talep_edilen_yatirim }}</div>
+                    </div>
+                {% endif %}
+                
+                {% if user.role == 'investor' and user.yatirim_miktari %}
+                    <div class="info-row">
+                        <div class="info-label">Yatırım Yapmayı Düşündüğü Miktar 💰:</div>
+                        <div class="info-value">${{ user.yatirim_miktari }}</div>
+                    </div>
+                {% endif %}
+                {% if user.ths %}
+                    <div class="info-row">
+                        <div class="info-label">(THS) 📊:</div>
+                        <div class="info-value">{{ user.ths }}</div>
+                    </div>
+                {% endif %}
+            </div>
+            
+            <form method="post" action="{% url 'accept_match' %}" class="match-form">
+                {% csrf_token %}
+                <input type="hidden" name="matched_user_id" value="{{ user.id }}">
+                
+                <div class="form-group">
+                    <label for="selected_slot" class="form-label">Saat Seç 🕐:</label>
+<select name="selected_slot" required class="form-select">
+    {% for slot in available_slots %}
+        {% if slot.is_full %}
+            <option value="{{ slot.datetime }}|{{ slot.table }}" disabled class="slot-dolu">
+                {{ slot.time }} (Masa {{ slot.table }}) - Dolu ❌
+            </option>
+        {% else %}
+            <option value="{{ slot.datetime }}|{{ slot.table }}">
+                {{ slot.time }} (Masa {{ slot.table }})
+            </option>
+        {% endif %}
+    {% endfor %}
+</select>
+
+                </div>
+                
+                <button type="submit" class="match-button">
+                    <span class="match-icon">👥</span> Bu kişiyle eşleş!
+                </button>
+            </form>
+        </div>
+    {% endfor %}
+{% else %}
+    <div class="no-matches">
+        <p>Uygun eşleşme bulunamadı 😢</p>
+    </div>
+{% endif %}
+
+    </div>
+    
+
+</body>
+</html>

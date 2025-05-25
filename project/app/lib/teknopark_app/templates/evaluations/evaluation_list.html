@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Değerlendirme Listesi</title>
+    <style>
+        :root {
+            --primary-color: #1a4434;
+            --primary-light: #2a5544;
+            --text-light: #ffffff;
+            --text-dark: #333333;
+            --accent: #ffb74d;
+            --success: #4caf50;
+            --danger: #f44336;
+            --background: #f5f5f5;
+            --card-bg: #ffffff;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--background);
+            width: 390px;
+            margin: 0 auto;
+            color: var(--text-dark);
+            padding-bottom: 70px;
+        }
+        
+        .header {
+            background-color: var(--primary-color);
+            color: var(--text-light);
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            position: relative;
+        }
+        
+        .header h1 {
+            font-size: 1.2rem;
+            font-weight: 500;
+        }
+        
+        .back-btn {
+            background: none;
+            border: none;
+            color: var(--text-light);
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 5px;
+            border-radius: 50%;
+            transition: background-color 0.3s;
+        }
+        
+        .back-btn:hover {
+            background-color: rgba(255,255,255,0.1);
+        }
+        
+        .container {
+            padding: 15px;
+        }
+        
+        .search-form {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            padding: 15px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        
+        .search-form input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+            margin-bottom: 10px;
+        }
+        
+        .search-form input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+        
+        .search-btn {
+            background-color: var(--primary-color);
+            color: var(--text-light);
+            border: none;
+            border-radius: 20px;
+            padding: 10px 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            transition: background-color 0.3s;
+        }
+        
+        .search-btn:hover {
+            background-color: var(--primary-light);
+        }
+        
+        .evaluation-card {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            padding: 15px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            border-left: 4px solid var(--primary-color);
+        }
+        
+        .match-info {
+            margin-bottom: 12px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .match-title {
+            font-weight: 600;
+            color: var(--primary-color);
+            font-size: 0.95rem;
+            margin-bottom: 5px;
+        }
+        
+        .match-participants {
+            font-size: 0.85rem;
+            color: #666;
+        }
+        
+        .evaluator-info {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        
+        .evaluator-avatar {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            background-color: var(--primary-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            margin-right: 10px;
+            font-size: 0.8rem;
+        }
+        
+        .evaluator-details {
+            flex: 1;
+        }
+        
+        .evaluator-name {
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+        
+        .evaluator-email {
+            font-size: 0.8rem;
+            color: #666;
+        }
+        
+        .role-badge {
+            display: inline-block;
+            background-color: var(--accent);
+            color: #ad6700;
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            margin-bottom: 10px;
+        }
+        
+        .view-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            background-color: var(--primary-color);
+            color: var(--text-light);
+            text-decoration: none;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: background-color 0.3s;
+        }
+        
+        .view-link:hover {
+            background-color: var(--primary-light);
+        }
+        
+        .empty-message {
+            text-align: center;
+            padding: 40px 20px;
+            color: #666;
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            font-size: 0.9rem;
+        }
+        
+        .empty-icon {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            opacity: 0.5;
+        }
+        
+        .back-link {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: var(--primary-color);
+            color: var(--text-light);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            transition: background-color 0.3s;
+            font-size: 1.2rem;
+        }
+        
+        .back-link:hover {
+            background-color: var(--primary-light);
+        }
+        
+        .icon {
+            font-family: 'Material Icons', sans-serif;
+            font-size: inherit;
+        }
+        
+        /* Material Icons fallback */
+        .icon::before {
+            content: attr(data-icon);
+        }
+        
+        .icon[data-icon="search"]::before { content: "🔍"; }
+        .icon[data-icon="visibility"]::before { content: "👁️"; }
+        .icon[data-icon="sentiment_dissatisfied"]::before { content: "😞"; }
+        .icon[data-icon="arrow_back"]::before { content: "←"; }
+        
+        /* Stats section */
+        .stats-container {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .stat-card {
+            flex: 1;
+            background-color: var(--card-bg);
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        
+        .stat-number {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+        
+        .stat-label {
+            font-size: 0.8rem;
+            color: #666;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <a href="/dashboard/" class="back-btn">
+            <span class="icon">←</span>
+        </a>
+        <h1>Değerlendirme Listesi</h1>
+        <div></div>
+    </div>
+
+    <div class="container">
+        <!-- İstatistikler -->
+        <div class="stats-container">
+            <div class="stat-card">
+                <div class="stat-number">{{ evaluations|length }}</div>
+                <div class="stat-label">Toplam</div>
+            </div>
+        </div>
+
+        <!-- Arama Formu -->
+        <form method="get" class="search-form">
+            <input type="text" name="q" placeholder="Ad, soyad ya da e-posta..." value="{{ request.GET.q }}" id="searchInput">
+            <button type="submit" class="search-btn">
+                Ara <span class="icon">🔍</span>
+            </button>
+        </form>
+        
+        <!-- Değerlendirme Kartları -->
+        <div id="evaluationsList">
+            {% for evaluation in evaluations %}
+                <div class="evaluation-card">
+                    <div class="match-info">
+                        {% with match=evaluation.match %}
+                            <div class="match-title">{{ match }}</div>
+                            <div class="match-participants">{{ match.entrepreneur }} (Girişimci) & {{ match.investor }} (Yatırımcı)</div>
+                        {% endwith %}
+                    </div>
+                    
+                    <div class="evaluator-info">
+                        <div class="evaluator-details">
+                            <div class="evaluator-name">{{ evaluation.evaluator.get_full_name }}</div>
+                            <div class="evaluator-email">{{ evaluation.evaluator.email }}</div>
+                        </div>
+                    </div>
+                    
+                    <div class="role-badge">{{ evaluation.get_role_display }}</div>
+                    
+                    <a href="{% url 'evaluation_detail' evaluation.id %}" class="view-link">
+                        Görüntüle <span class="icon">👁️</span>
+                    </a>
+                </div>
+            {% empty %}
+                <div class="empty-message">
+                    <div class="empty-icon">😞</div>
+                    <div>Hiç değerlendirme bulunamadı</div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <a href="/dashboard/" class="back-link" title="Dashboard'a Dön">
+        <span class="icon">←</span>
+    </a>
+
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+
+        // Sayfa yüklendiğinde istatistikleri güncelle
+        document.addEventListener('DOMContentLoaded', function() {
+            // Bu kısımda backend'den gelen verilerle istatistikleri güncelleyebilirsiniz
+            // Şimdilik placeholder değerler
+            const totalCards = document.querySelectorAll('.evaluation-card').length;
+            const completedCount = Math.floor(totalCards * 0.7); // %70'i tamamlanmış varsayalım
+            const pendingCount = totalCards - completedCount;
+            
+            document.getElementById('completedCount').textContent = completedCount;
+            document.getElementById('pendingCount').textContent = pendingCount;
+        });
+
+        // Enter tuşu ile form gönderimi (zaten HTML form ile otomatik)
+        document.getElementById('searchInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                this.closest('form').submit();
+            }
+        });
+    </script>
+</body>
+</html>

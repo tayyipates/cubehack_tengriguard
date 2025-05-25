@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Girişimciler Listesi</title>
+    <style>
+        :root {
+            --primary-color: #1a4434;
+            --primary-light: #2a5544;
+            --text-light: #ffffff;
+            --text-dark: #333333;
+            --accent: #ffb74d;
+            --success: #4caf50;
+            --danger: #f44336;
+            --background: #f5f5f5;
+            --card-bg: #ffffff;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--background);
+            width: 390px;
+            margin: 0 auto;
+            color: var(--text-dark);
+            padding-bottom: 70px;
+        }
+        
+        .header {
+            background-color: var(--primary-color);
+            color: var(--text-light);
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            position: relative;
+        }
+        
+        .header h2 {
+            font-size: 1.2rem;
+            font-weight: 500;
+        }
+        
+        .container {
+            padding: 15px;
+        }
+        
+        .list-title {
+            margin: 20px 0 15px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+        
+        .entrepreneurs-list {
+            list-style-type: none;
+        }
+        
+        .entrepreneur-card {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            padding: 15px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            display: flex;
+            align-items: center;
+        }
+        
+        .entrepreneur-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: var(--primary-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            margin-right: 15px;
+        }
+        
+        .entrepreneur-info {
+            flex-grow: 1;
+        }
+        
+        .entrepreneur-name {
+            font-weight: 500;
+            margin-bottom: 5px;
+        }
+        
+        .entrepreneur-email {
+            font-size: 0.9rem;
+            color: #666;
+        }
+        
+        .no-entrepreneurs {
+            text-align: center;
+            padding: 30px 0;
+            color: #666;
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        
+        .empty-icon {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            color: var(--primary-light);
+        }
+        
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: var(--card-bg);
+            display: flex;
+            justify-content: space-around;
+            padding: 10px 0;
+            box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-size: 0.8rem;
+            color: #666;
+            text-decoration: none;
+        }
+        
+        .nav-item.active {
+            color: var(--primary-color);
+        }
+        
+        .nav-icon {
+            font-size: 1.5rem;
+            margin-bottom: 2px;
+        }
+    </style>
+    <style>
+            .delete-btn {
+            background: linear-gradient(135deg, var(--danger), #d32f2f);
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            min-width: 60px;
+            justify-content: center;
+            box-shadow: 0 2px 5px rgba(244, 67, 54, 0.3);
+            position: absolute;
+            top: 15px;
+            right: 15px;
+        }
+        
+        .delete-btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 10px rgba(244, 67, 54, 0.4);
+            background: linear-gradient(135deg, #d32f2f, #b71c1c);
+        }
+        
+        .delete-btn:active {
+            transform: translateY(0);
+        }
+    /* Search input için şık bir stil */
+    #searchInput {
+        width: 100%;
+        max-width: 400px;
+        padding: 10px 15px;
+        font-size: 16px;
+        border-radius: 25px;
+        border: 1px solid #ddd;
+        outline: none;
+        transition: all 0.3s ease;
+        margin-bottom: 20px;
+        background-color: #f9f9f9;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        color: #333;
+    }
+
+    /* Input üzerine gelince renk ve gölge efekti */
+    #searchInput:focus {
+        border-color: #5cb85c;
+        background-color: #ffffff;
+        box-shadow: 0 4px 10px rgba(92, 184, 92, 0.3);
+    }
+
+    /* Arama ikonunu ekleyelim */
+    #searchInput::placeholder {
+        color: #aaa;
+        font-style: italic;
+    }
+
+    /* Arama kutusunun etrafına güzel bir yuvarlak köşe efekti */
+    #searchInput {
+        border: 1px solid #ddd;
+        padding: 10px 15px;
+        border-radius: 50px;
+        font-size: 16px;
+        outline: none;
+    }
+
+    /* Arama kutusunun focus halinde daha dikkat çekici görünmesi için */
+    #searchInput:focus {
+        border-color: #5bc0de;
+        box-shadow: 0px 0px 10px rgba(91, 192, 222, 0.5);
+    }
+</style>
+
+</head>
+<body>
+    <div class="header">
+                <a href="/dashboard/">Geri Gel</a>
+        <h2>Girişimciler</h2>
+    </div>
+    
+    <div class="container">
+        <h3 class="list-title">Girişimciler Listesi</h3>
+        
+<div>
+    <input type="text" id="searchInput" placeholder="Kullanıcı ve Şirket Ara..." onkeyup="searchFunction()" />
+</div>
+
+<ul class="entrepreneurs-list" id="entrepreneursList">
+    {% for kullanici in kullanicilar %}
+        <li class="entrepreneur-card" data-name="{{ kullanici.first_name }} {{ kullanici.last_name }}" data-company="{{ kullanici.sirket }}">
+            <div class="entrepreneur-avatar">
+                {{ kullanici.first_name|first }}{{ kullanici.last_name|first }}
+            </div>
+            <div class="entrepreneur-info">
+                <div class="entrepreneur-name">{{ kullanici.first_name }} {{ kullanici.last_name }}</div>
+                <div class="entrepreneur-email">Mail : {{ kullanici.email }}</div>
+                <div class="entrepreneur-email">Şirket : {{ kullanici.sirket }}</div>
+                <div class="entrepreneur-email">Web Adresi : {{ kullanici.web_adresi }}</div>
+                <div class="entrepreneur-email">THS : {{ kullanici.ths }}</div>
+                <div class="entrepreneur-email">Kategoriler :{% for kategori in kullanici.categories.all %}
+                    {{ kategori.name }}{% if not forloop.last %}, {% endif %}
+                {% empty %}
+                    Kategori yok 😢
+                {% endfor %}</div>
+                {% if kullanici.role == 'entrepreneur' and kullanici.talep_edilen_yatirim %}
+                    <div class="entrepreneur-email">Talep Edilen Yatırım : ${{ kullanici.talep_edilen_yatirim }}</div>
+                {% endif %}
+            </div>
+
+        <form action="{% url 'delete_entrepreneur' kullanici.id %}" method="post" style="display:inline;">
+            {% csrf_token %}
+            <button type="submit" style="background: linear-gradient(135deg, var(--danger), #d32f2f);
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            min-width: 60px;
+            justify-content: center;
+            box-shadow: 0 2px 5px rgba(244, 67, 54, 0.3);
+            top: 15px;
+            right: 15px;">Sil</button>
+        </form>
+        </li>
+    {% empty %}
+        <li class="no-entrepreneurs">
+            <div class="empty-icon">😢</div>
+            <p>Henüz girişimci yok</p>
+        </li>
+    {% endfor %}
+</ul>
+<script>
+    function searchFunction() {
+        var input, filter, ul, li, name, company, i, txtValue;
+        input = document.getElementById('searchInput');
+        filter = input.value.toLowerCase(); // Arama terimini küçük harfe çevir
+        ul = document.getElementById("entrepreneursList");
+        li = ul.getElementsByTagName('li'); // Liste öğeleri
+
+        for (i = 0; i < li.length; i++) {
+            name = li[i].getAttribute('data-name').toLowerCase(); // Kullanıcı adı
+            company = li[i].getAttribute('data-company').toLowerCase(); // Şirket adı
+            txtValue = name + " " + company;
+
+            if (txtValue.indexOf(filter) > -1) {
+                li[i].style.display = ""; // Eğer eşleşme varsa, göster
+            } else {
+                li[i].style.display = "none"; // Eşleşme yoksa gizle
+            }
+        }
+    }
+</script>
+
+    </div>
+
+</body>
+</html>

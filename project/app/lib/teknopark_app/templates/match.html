@@ -1,0 +1,72 @@
+<body>
+    <div class="header">
+        <a href="javascript:history.back()" class="back-button">
+            ← Geri
+        </a>
+        <h2>Eşleşmeyi Başlat</h2>
+    </div>
+
+    <div class="container">
+        <h2 class="page-title">Uygun Kişilerle Eşleş</h2>
+
+        {% if candidates %}
+            {% for user in candidates %}
+                <div class="user-card">
+                    <div class="user-header">
+                        <div class="user-avatar">
+                            {{ user.first_name|slice:":1" }}
+                        </div>
+                        <div class="user-name">
+                            {{ user.first_name }} {{ user.last_name }}
+                        </div>
+                    </div>
+
+                    <div class="user-info">
+                        <div class="info-row">
+                            <div class="info-label">Email:</div>
+                            <div class="info-value">{{ user.email }}</div>
+                        </div>
+                        <div class="info-row">
+                            <div class="info-label">Şirket:</div>
+                            <div class="info-value">{{ user.sirket }}</div>
+                        </div>
+                        <div class="info-row">
+                            <div class="info-label">Rol:</div>
+                            <div class="info-value">{{ user.get_role_display }}</div>
+                        </div>
+                    </div>
+
+                    <form method="post" action="{% url 'accept_match' %}" class="match-form">
+                        {% csrf_token %}
+                        <input type="hidden" name="matched_user_id" value="{{ user.id }}">
+
+                        <div class="form-group">
+                            <label for="selected_slot" class="form-label">Saat Seç 🕐:</label>
+                            <select name="selected_slot" required class="form-select">
+                                {% for slot in available_slots %}
+                                    {% if slot.is_full %}
+                                        <option value="{{ slot.datetime }}|{{ slot.table }}" disabled class="slot-dolu">
+                                            {{ slot.time }} (Masa {{ slot.table }}) - Dolu
+                                        </option>
+                                    {% else %}
+                                        <option value="{{ slot.datetime }}|{{ slot.table }}">
+                                            {{ slot.time }} (Masa {{ slot.table }})
+                                        </option>
+                                    {% endif %}
+                                {% endfor %}
+                            </select>
+                        </div>
+
+                        <button type="submit" class="match-button">
+                            <span class="match-icon">👥</span> Bu kişiyle eşleş!
+                        </button>
+                    </form>
+                </div>
+            {% endfor %}
+        {% else %}
+            <div class="no-matches">
+                <p>Uygun eşleşme bulunamadı 😢</p>
+            </div>
+        {% endif %}
+    </div>
+</body>

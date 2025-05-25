@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notlarım</title>
+    <style>
+        :root {
+            --primary-color: #1a4434;
+            --primary-light: #2a5544;
+            --text-light: #ffffff;
+            --text-dark: #333333;
+            --accent: #ffb74d;
+            --success: #4caf50;
+            --danger: #f44336;
+            --background: #f5f5f5;
+            --card-bg: #ffffff;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--background);
+              width: 390px; /* iPhone 14 genişliği gibi sabit bir genişlik */
+  margin: 0 auto; /* Ortalamak için */
+
+            color: var(--text-dark);
+            padding-bottom: 70px;
+        }
+        
+        .header {
+            background-color: var(--primary-color);
+            color: var(--text-light);
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        
+        .header h2 {
+            font-size: 1.2rem;
+            font-weight: 500;
+        }
+        
+        .back-button {
+            color: var(--text-light);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+        
+        .container {
+            padding: 15px;
+        }
+        
+        .page-title {
+            margin: 15px 0;
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .create-note-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background-color: var(--primary-color);
+            color: var(--text-light);
+            text-decoration: none;
+            padding: 12px 20px;
+            border-radius: 25px;
+            font-weight: 500;
+            margin: 20px 0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            transition: background-color 0.3s;
+        }
+        
+        .create-note-btn:hover {
+            background-color: var(--primary-light);
+        }
+        
+        .notes-list {
+            list-style: none;
+            margin-top: 15px;
+        }
+        
+        .note-card {
+            background-color: var(--card-bg);
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            display: flex;
+            align-items: center;
+            transition: transform 0.2s;
+        }
+        
+        .note-card:active {
+            transform: scale(0.98);
+        }
+        
+        .note-icon {
+            background-color: var(--primary-light);
+            color: var(--text-light);
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            margin-right: 15px;
+        }
+        
+        .note-content {
+            flex: 1;
+        }
+        
+        .note-title {
+            font-weight: 600;
+            font-size: 1rem;
+            margin-bottom: 4px;
+            color: var(--primary-color);
+        }
+        
+        .note-date {
+            font-size: 0.8rem;
+            color: #777;
+        }
+        
+        .empty-notes {
+            text-align: center;
+            background-color: #f9f9f9;
+            padding: 25px;
+            border-radius: 10px;
+            margin-top: 20px;
+            color: #777;
+        }
+        
+        .empty-notes-icon {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            color: #aaa;
+        }
+        
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: var(--card-bg);
+            display: flex;
+            justify-content: space-around;
+            padding: 10px 0;
+            box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-size: 0.8rem;
+            color: #666;
+            text-decoration: none;
+        }
+        
+        .nav-item.active {
+            color: var(--primary-color);
+        }
+        
+        .nav-icon {
+            font-size: 1.5rem;
+            margin-bottom: 2px;
+        }
+        
+        .fab-button {
+            position: fixed;
+            bottom: 80px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            border-radius: 30px;
+            background-color: var(--primary-color);
+            color: var(--text-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            box-shadow: 0 3px 5px rgba(0,0,0,0.2);
+            text-decoration: none;
+            transition: transform 0.2s, background-color 0.3s;
+        }
+        
+        .fab-button:active {
+            transform: scale(0.95);
+        }
+        
+        .fab-button:hover {
+            background-color: var(--primary-light);
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <a href="javascript:history.back()" class="back-button">
+            ← Geri
+        </a>
+        <h2>Notlarım</h2>
+        <div style="width: 24px;"></div> <!-- placeholder for balance -->
+    </div>
+    
+    <div class="container">
+        <h2 class="page-title">
+            <span>📓</span> Notlarım
+        </h2>
+        
+        <a href="{% url 'create_note' %}" class="create-note-btn">
+            <span>➕</span> Yeni Not Oluştur
+        </a>
+        
+<ul class="notes-list">
+    {% for note in notes %}
+        <li class="note-card">
+            <a href="{% url 'edit_note' note.id %}" class="note-link">
+                <div class="note-icon">📝</div>
+                <div class="note-content">
+                    <div class="note-title">{{ note.title }}</div>
+                    <div class="note-date">{{ note.created_at|date:"d M Y H:i" }}</div>
+                </div>
+            </a>
+        </li>
+    {% empty %}
+        <li class="empty-notes">
+            <div class="empty-notes-icon">📝</div>
+            <p>Henüz notun yok 🥺</p>
+            <p>Yeni bir not oluşturarak başlayabilirsin!</p>
+        </li>
+    {% endfor %}
+</ul>
+
+    </div>
+    
+    <!-- Floating Action Button -->
+    <a href="{% url 'create_note' %}" class="fab-button">
+        ➕
+    </a>
+    
+</body>
+</html>

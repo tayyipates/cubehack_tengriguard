@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toplantı Günleri Yönetimi</title>
+    <style>
+        :root {
+            --primary-color: #1a4434;
+            --primary-light: #2a5544;
+            --text-light: #ffffff;
+            --text-dark: #333333;
+            --accent: #ffb74d;
+            --success: #4caf50;
+            --danger: #f44336;
+            --background: #f5f5f5;
+            --card-bg: #ffffff;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--background);
+            width: 390px;
+            margin: 0 auto;
+            color: var(--text-dark);
+            padding-bottom: 70px;
+        }
+        
+        .header {
+            background-color: var(--primary-color);
+            color: var(--text-light);
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            position: relative;
+        }
+        
+        .header h2 {
+            font-size: 1.2rem;
+            font-weight: 500;
+        }
+        
+        .avatar {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            background-color: var(--primary-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        
+        .container {
+            padding: 15px;
+        }
+        
+        .section-title {
+            margin: 20px 0 15px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+        
+        .card {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            padding: 15px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+            color: var(--text-dark);
+        }
+        
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 1rem;
+        }
+        
+        .btn {
+            padding: 10px 15px;
+            border: none;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            cursor: pointer;
+            margin-top: 10px;
+            display: inline-flex;
+            align-items: center;
+            transition: background-color 0.3s;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: var(--text-light);
+        }
+        
+        .btn-danger {
+            background-color: var(--danger);
+            color: var(--text-light);
+            padding: 5px 10px;
+            font-size: 0.8rem;
+            margin-left: 10px;
+        }
+        
+        .meeting-list {
+            list-style: none;
+        }
+        
+        .meeting-item {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            padding: 15px;
+            margin-bottom: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .meeting-info {
+            flex: 1;
+        }
+        
+        .meeting-date {
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+        
+        .meeting-time {
+            color: #666;
+            font-size: 0.9rem;
+            margin-top: 5px;
+        }
+        
+        .meeting-tables {
+            display: inline-flex;
+            align-items: center;
+            background-color: #e8f5e9;
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            color: var(--success);
+            margin-top: 5px;
+        }
+        
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: var(--card-bg);
+            display: flex;
+            justify-content: space-around;
+            padding: 10px 0;
+            box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-size: 0.8rem;
+            color: #666;
+            text-decoration: none;
+        }
+        
+        .nav-item.active {
+            color: var(--primary-color);
+        }
+        
+        .nav-icon {
+            font-size: 1.5rem;
+            margin-bottom: 2px;
+        }
+        
+        .empty-state {
+            text-align: center;
+            padding: 30px 0;
+            color: #666;
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+<div class="container">
+    <h3 class="section-title">Toplantı Günü Düzenle</h3>
+    <div class="card">
+        <form method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="date">Tarih:</label>
+                <input type="date" name="date" id="date" value="{{ meeting_day.date|date:'Y-m-d' }}" required>
+            </div>
+            <div class="form-group">
+                <label for="start_time">Başlangıç Saati:</label>
+                <input type="time" name="start_time" id="start_time" value="{{ meeting_day.start_time }}" required>
+            </div>
+            <div class="form-group">
+                <label for="end_time">Bitiş Saati:</label>
+                <input type="time" name="end_time" id="end_time" value="{{ meeting_day.end_time }}" required>
+            </div>
+            <div class="form-group">
+                <label for="total_tables">Toplam Masa Sayısı:</label>
+                <input type="number" name="total_tables" id="total_tables" min="1" value="{{ meeting_day.total_tables }}" required>
+            </div>
+            
+            <button type="button" class="btn btn-secondary" id="openModalBtn">Masaları Düzenle</button>
+
+            <!-- Modal -->
+            <div class="modal" id="tablesModal" tabindex="-1" aria-labelledby="tablesModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div id="tablesForm"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <script>
+                document.getElementById('openModalBtn').addEventListener('click', function() {
+                    const totalTables = document.getElementById('total_tables').value;
+                    const tablesForm = document.getElementById('tablesForm');
+                    // Temizle önceki formu
+                    tablesForm.innerHTML = '';
+
+                    // Yatırımcıları JSON olarak şablonla gönderiyoruz
+                    const investors = JSON.parse('{{ investors|escapejs }}');
+                    const meetingDayTables = JSON.parse('{{ meeting_day_tables|escapejs }}');
+
+                    // Masalar için form elemanlarını ekleyelim
+                    for (let i = 1; i <= totalTables; i++) {
+                        const tableDiv = document.createElement('div');
+                        tableDiv.classList.add('form-group');
+
+                        const label = document.createElement('label');
+                        label.textContent = `Masa ${i} - Yatırımcı:`;
+
+                        const select = document.createElement('select');
+                        select.name = `table_${i}_investor`;
+                        select.classList.add('form-control');
+
+                        // Seçenekleri ekleyelim
+                        select.innerHTML = `<option value="">Seçiniz</option>`;
+                        investors.forEach(investor => {
+                            const option = document.createElement('option');
+                            option.value = investor.id;
+                            option.textContent = `${investor.first_name} ${investor.last_name}`;
+
+                            // Eğer masada bu yatırımcı varsa seçili yap
+                            if (meetingDayTables.some(table => table.investor_id === investor.id && table.table_number === i)) {
+                                option.selected = true;
+                            }
+
+                            select.appendChild(option);
+                        });
+
+                        tableDiv.appendChild(label);
+                        tableDiv.appendChild(select);
+                        tablesForm.appendChild(tableDiv);
+                    }
+
+                    // Modal'ı göster
+                    new bootstrap.Modal(document.getElementById('tablesModal')).show();
+                });
+            </script>
+
+            <button type="submit" class="btn btn-primary">
+                <i class="fas fa-save" style="margin-right: 8px;"></i>
+                Toplantı Gününü Güncelle
+            </button>
+        </form>
+    </div>
+</div>
+
+
+
