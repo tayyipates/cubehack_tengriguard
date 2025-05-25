@@ -8,9 +8,8 @@ Bu mobil uygulama, Teknopark İstanbul tarafından düzenlenen yatırımcı-giri
 
 - **Mobil Geliştirme:**
   - Android: Flutter
-  - iOS: Swift
-- **Backend & Veritabanı:** Supabase (BaaS)
-- **Bildirim Servisi:** Firebase FCM
+  - iOS: Swift (apk yapılamadı)
+- **Bildirim Servisi:** Firebase FCM (Yapılamadı)
 
 ## 👥 Takım Üyeleri ve Rolleri
 
